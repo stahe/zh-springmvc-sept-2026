@@ -1,0 +1,1442 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Spring MVC] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-springmvc-sept-2026/%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html">
+      
+      
+        <link rel="prev" href="%E5%9B%BD%E9%99%85%E5%8C%96.html">
+      
+      
+        <link rel="next" href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>6. 数据作用域 - [Spring MVC] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Spring MVC] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-数据作用域" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Spring MVC] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. 数据作用域
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Spring MVC] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%AE%80%E4%BB%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8E%A7%E5%88%B6%E5%99%A8-%E5%8A%A8%E4%BD%9C%E4%B8%8E%E8%B7%AF%E7%94%B1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 控制器、动作与路由
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 动作模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E6%9D%BF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 视图及其模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%9B%BD%E9%99%85%E5%8C%96.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-示例-23三种作用域" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. 示例 23：三种作用域
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1. 示例 23：三种作用域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-三个-bean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1. 三个 Bean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-请求作用域的数据请求属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2. 请求作用域的数据：请求属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-控制器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3. 控制器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#614-视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.4. 视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#615-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.5. 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 请求的生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 身份验证与授权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%98%B6%E6%AE%B5%E6%80%A7%E5%B0%8F%E7%BB%93.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 阶段性小结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6-rdvmedecins-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 案例研究：RdvMedecins 应用程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-数据作用域">6. <span style="color: #2e74b5">数据作用域</span></h1>
+<p>Web 应用程序同时为许多用户提供服务，而每个用户都会发出大量请求。因此，数据可以在三个层级上共享，称为其<strong>作用域</strong>：</p>
+<ul>
+<li><strong>应用程序</strong>作用域：数据在服务器的整个生命周期内由所有用户共享（例如医生列表）；</li>
+<li><strong>请求</strong>作用域：数据只在一次请求期间存在（视图的模型）；</li>
+<li><strong>客户端</strong>作用域：数据专属于某个用户，并且必须在一次请求到下一次请求之间保持（所选语言、已登录的用户）。</li>
+</ul>
+<p>对于最后这种作用域，Web 应用程序长期以来使用<strong>会话</strong>：这是由服务器维护的、专属于每个浏览器的内存空间，通过标识 Cookie 找回（<strong><em>[JSESSIONID]</em></strong> 在 <em>[Java]</em> 中）。<em>[Spring MVC]</em> 默认仍将它用于闪现属性（示例 20）。然而，案例研究没有使用它，本文档中的示例也没有使用它（少数示例中的闪现属性除外，例如示例 20 和 21）：客户端数据由浏览器存储在 Cookie 中。服务器在同一用户的两次请求之间不存储任何内容：我们说它是<strong>无状态的</strong> （<em>[stateless]</em>）。例如，这使得在负载均衡器之后运行多个相同的服务器成为可能。代价是：Cookie 受用户控制，用户可以读取和修改它。因此，那里只存储非敏感数据，或者由服务器<strong>签名</strong>或<strong>加密</strong>的数据（这样服务器就能检测到任何修改）：身份验证令牌就是这种情况（第 8 章）。</p>
+<p>在服务器端，应用程序作用域和请求作用域对应于 <strong>Bean 的作用域</strong>，即 <em>[Spring]</em> 中的 Bean（参见示例 06）。Bean 由 <em>[Spring]</em> 创建和维护；其作用域指定创建多少个实例以及它们存活多久。其中有三种与我们相关：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>注解</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>作用域</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>每个实例……</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">（无）</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">singleton</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">在应用程序的整个生命周期内存在，由所有请求共享。这是默认作用域</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[@RequestScope]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">request</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">每个 HTTP 请求一个，在该请求期间由所有请求它的对象共享</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>[@Scope(&quot;prototype&quot;)]</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">prototype</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">每次从 <i>[Spring]</i> 请求该 Bean 时：两次请求，两个实例</div></td></tr></table>
+
+<p>这些对应于 <strong><em>[Singleton]</em></strong>、<strong><em>[Scoped]、</em></strong>和 <strong><em>[Transient]</em></strong> 这些 <em>[ASP.NET Core]</em> 的生命周期。此外还有会话作用域（<strong><em>[@SessionScope]</em></strong>），我们不会使用它。</p>
+<h2 id="61-示例-23三种作用域">6.1. <span style="color: #2e74b5">示例 23：三种作用域</span></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>23-scopes/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── src/main/java/example23/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│   ├── config/
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>│   │   ├── StartFilter.java
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>│   │   └── WebConfig.java
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>│   ├── controllers/
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>│   │   └── ScopesController.java
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>│   ├── services/
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>│   │   ├── CounterService.java
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>│   │   ├── ToolService.java
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>│   │   └── RequestService.java
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>│   └── Example23Application.java
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>├── src/main/resources/
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>│   ├── templates/scopes/
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>│   │   └── scopes.html
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>│   └── application.properties
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>└── pom.xml
+</code></pre></div></td></tr></table></div>
+<p>文件 <strong><em>[pom.xml]</em></strong>、<strong><em>[application.properties]</em></strong>、<strong><em>[Example23Application.java]、</em></strong>以及 <strong><em>[WebConfig.java]</em></strong> （它只是提供来自 <em>[Bootstrap]</em> 的文件）与之前示例中的相同。</p>
+<h3 id="611-三个-bean">6.1.1. <span style="color: #1f4d78">三个 Bean</span></h3>
+<p><strong><em>[services/CounterService.java]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example23.services</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1">// 应用作用域（单例，Bean 的默认作用域）：只有一个</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1">// 实例，由所有用户的所有请求共享</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="nd">@Service</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CounterService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="c1">// 多个请求可以同时运行：AtomicInteger</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="c1">// 保证两个同时发生的递增不会丢失</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="p">();</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">.</span><span class="na">incrementAndGet</span><span class="p">();</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 9 行：一个 Bean，没有任何进一步的说明：它是单例。因此它的字段 <strong><em>[total]</em></strong> 属于应用程序作用域；</li>
+<li>第 14–18 行：Web 服务器在多个线程（<strong>[threads]</strong>）上<em>同时</em>处理多个请求。如果两个请求同时执行 <strong><em>[total++]</em></strong> ，它们可能读到相同的值，从而丢失一次递增。<strong><em>[AtomicInteger]</em></strong> 是一个整数，<strong><em>[incrementAndGet]</em></strong> 方法在一次不可分割的操作中完成读取、加一和写回。单例 Bean 必须始终提防这类并发访问。</li>
+</ul>
+<p>文件 <strong><em>[services/RequestService.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example23.services</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.context.annotation.RequestScope</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// 请求作用域（@RequestScope）：每个 HTTP 请求一个新实例，</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1">// 由在该请求期间请求它的所有对象共享</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="nd">@Service</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="nd">@RequestScope</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RequestService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="c1">// static：由所有实例共享的计数器</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">CREATED_INSTANCES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="p">();</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CREATED_INSTANCES</span><span class="p">.</span><span class="na">incrementAndGet</span><span class="p">();</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getNumber</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 11 行：注解 <strong><em>[@RequestScope]</em></strong> 赋予该 Bean “request” 作用域；</li>
+<li>第 15 行：[static] 字段 属于类，而不属于某个实例；它由所有实例共享。它统计已创建的实例数量；</li>
+<li>第 17 行：每个实例在创建时被分配一个编号。由于该 Bean 具有请求作用域，因此编号随每个请求而变化。</li>
+</ul>
+<p>文件 <strong><em>[services/ToolService.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example23.services</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Scope</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">// 原型作用域：每次向 Spring 请求该 Bean 时都会创建一个新实例</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nd">@Service</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nd">@Scope</span><span class="p">(</span><span class="s">"prototype"</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ToolService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">CREATED_INSTANCES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="p">();</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CREATED_INSTANCES</span><span class="p">.</span><span class="na">incrementAndGet</span><span class="p">();</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getNumber</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>同样的实例计数器，用于作用域为 <strong><em>[prototype]</em></strong> 的 Bean（第 10 行）。</p>
+<h3 id="612-请求作用域的数据请求属性">6.1.2. <span style="color: #1f4d78">请求作用域的数据：请求属性</span></h3>
+<p>文件 <strong><em>[config/StartFilter.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example23.config</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalTime</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.filter.OncePerRequestFilter</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.FilterChain</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.ServletException</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="c1">// 一个过滤器（参见第 7 章）：对每个请求运行，早于 Spring MVC。</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="c1">// 请求作用域：请求的属性随请求而生，随请求而灭。</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="nd">@Component</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StartFilter</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">OncePerRequestFilter</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doFilterInternal</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">FilterChain</span><span class="w"> </span><span class="n">next</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">        </span><span class="n">request</span><span class="p">.</span><span class="na">setAttribute</span><span class="p">(</span><span class="s">"start"</span><span class="p">,</span><span class="w"> </span><span class="n">LocalTime</span><span class="p">.</span><span class="na">now</span><span class="p">().</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">"HH:mm:ss.SSS"</span><span class="p">)));</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">        </span><span class="n">next</span><span class="p">.</span><span class="na">doFilter</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w"> </span><span class="c1">// 我们把请求交给后续部分</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 17–18 行：一个 Servlet <strong>过滤器</strong> （下一章将详细介绍它们）。它在 <em>[Spring MVC]</em> 之前处理每个请求。<strong><em>[OncePerRequestFilter]</em></strong> 类来自 <em>[Spring]</em> ，确保每个请求只执行一次；<strong><em>[@Component]</em></strong> 注解就足以让 <em>[Spring Boot]</em> 将其添加到过滤器链中；</li>
+<li>第 23 行：过滤器把请求的接收时间存储在一个<strong>请求属性</strong>中。<strong><em>[HttpServletRequest]</em></strong> 对象包含一个属性字典，它随请求一起创建和销毁：处理该请求的任何对象（过滤器、控制器、视图）都可以读取和写入它。这相当于 <strong><em>[HttpContext.Items]</em></strong> ，后者来自 <em>[ASP.NET Core]</em>；</li>
+<li>第 24 行：过滤器把控制权交给下一步：先是其他过滤器，然后是 <em>[Spring MVC]</em>。</li>
+</ul>
+<h3 id="613-控制器">6.1.3. <span style="color: #1f4d78">控制器</span></h3>
+<p>文件 <strong><em>[controllers/ScopesController.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span>
+<span class="normal"><a href="#__codelineno-5-36">36</a></span>
+<span class="normal"><a href="#__codelineno-5-37">37</a></span>
+<span class="normal"><a href="#__codelineno-5-38">38</a></span>
+<span class="normal"><a href="#__codelineno-5-39">39</a></span>
+<span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span>
+<span class="normal"><a href="#__codelineno-5-42">42</a></span>
+<span class="normal"><a href="#__codelineno-5-43">43</a></span>
+<span class="normal"><a href="#__codelineno-5-44">44</a></span>
+<span class="normal"><a href="#__codelineno-5-45">45</a></span>
+<span class="normal"><a href="#__codelineno-5-46">46</a></span>
+<span class="normal"><a href="#__codelineno-5-47">47</a></span>
+<span class="normal"><a href="#__codelineno-5-48">48</a></span>
+<span class="normal"><a href="#__codelineno-5-49">49</a></span>
+<span class="normal"><a href="#__codelineno-5-50">50</a></span>
+<span class="normal"><a href="#__codelineno-5-51">51</a></span>
+<span class="normal"><a href="#__codelineno-5-52">52</a></span>
+<span class="normal"><a href="#__codelineno-5-53">53</a></span>
+<span class="normal"><a href="#__codelineno-5-54">54</a></span>
+<span class="normal"><a href="#__codelineno-5-55">55</a></span>
+<span class="normal"><a href="#__codelineno-5-56">56</a></span>
+<span class="normal"><a href="#__codelineno-5-57">57</a></span>
+<span class="normal"><a href="#__codelineno-5-58">58</a></span>
+<span class="normal"><a href="#__codelineno-5-59">59</a></span>
+<span class="normal"><a href="#__codelineno-5-60">60</a></span>
+<span class="normal"><a href="#__codelineno-5-61">61</a></span>
+<span class="normal"><a href="#__codelineno-5-62">62</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example23.controllers</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.ObjectProvider</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.HttpHeaders</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.ResponseCookie</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Controller</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ui.Model</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.CookieValue</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example23.services.CounterService</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example23.services.ToolService</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example23.services.RequestService</span><span class="p">;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="c1">// 控制器本身是单例 Bean：它只创建一次</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nd">@Controller</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ScopesController</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CounterService</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="w">    </span><span class="c1">// 注入到单例中的请求作用域 Bean：Spring 注入的是一个</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="w">    </span><span class="c1">// “代理”，它把每次调用转发给当前请求的实例</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">RequestService</span><span class="w"> </span><span class="n">request</span><span class="p">;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="w">    </span><span class="c1">// 注入到单例中的原型：随控制器一起只创建一次</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ToolService</span><span class="w"> </span><span class="n">injectedTool</span><span class="p">;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="w">    </span><span class="c1">// 要每次获得一个新的原型：向 Spring 请求它</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ObjectProvider</span><span class="o">&lt;</span><span class="n">ToolService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tools</span><span class="p">;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ScopesController</span><span class="p">(</span><span class="n">CounterService</span><span class="w"> </span><span class="n">counter</span><span class="p">,</span><span class="w"> </span><span class="n">RequestService</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">ToolService</span><span class="w"> </span><span class="n">injectedTool</span><span class="p">,</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="w">            </span><span class="n">ObjectProvider</span><span class="o">&lt;</span><span class="n">ToolService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tools</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">;</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">injectedTool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injectedTool</span><span class="p">;</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">tools</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tools</span><span class="p">;</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36"></a>
+<a id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">ScopesModel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">instance</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">injectedTool</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">requestedTool</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">myVisits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39"></a>
+<a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">scopes</span><span class="p">(</span><span class="nd">@CookieValue</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"myVisits"</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">cookie</span><span class="p">,</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="w">            </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="w">        </span><span class="c1">// 客户端作用域：由浏览器保存的一份数据（Cookie），</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="w">        </span><span class="c1">// 每次请求都会回送给服务器</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">myVisits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toInteger</span><span class="p">(</span><span class="n">cookie</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46"></a><span class="w">        </span><span class="n">ResponseCookie</span><span class="w"> </span><span class="n">newCookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ResponseCookie</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="s">"myVisits"</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">myVisits</span><span class="p">))</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47"></a><span class="w">                </span><span class="p">.</span><span class="na">path</span><span class="p">(</span><span class="s">"/"</span><span class="p">).</span><span class="na">httpOnly</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">sameSite</span><span class="p">(</span><span class="s">"Lax"</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48"></a><span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="na">addHeader</span><span class="p">(</span><span class="n">HttpHeaders</span><span class="p">.</span><span class="na">SET_COOKIE</span><span class="p">,</span><span class="w"> </span><span class="n">newCookie</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"model"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScopesModel</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="na">increment</span><span class="p">(),</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getNumber</span><span class="p">(),</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="w">                </span><span class="n">injectedTool</span><span class="p">.</span><span class="na">getNumber</span><span class="p">(),</span><span class="w"> </span><span class="n">tools</span><span class="p">.</span><span class="na">getObject</span><span class="p">().</span><span class="na">getNumber</span><span class="p">(),</span><span class="w"> </span><span class="n">myVisits</span><span class="p">));</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"scopes/scopes"</span><span class="p">;</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53"></a>
+<a id="__codelineno-5-54" name="__codelineno-5-54"></a><span class="w">    </span><span class="c1">// "41" -&gt; 41；null 或 "abc" -&gt; 0</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">toInteger</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-57" name="__codelineno-5-57"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-5-58" name="__codelineno-5-58"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NumberFormatException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-59" name="__codelineno-5-59"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-60" name="__codelineno-5-60"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-61" name="__codelineno-5-61"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-62" name="__codelineno-5-62"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来解释这段代码：</p>
+<ul>
+<li>第 16–17 行：控制器本身就是一个 Bean，因此是单例：<em>[Spring]</em> 只创建它一次，并在那一刻一次性注入其依赖（第 29–35 行）。有意思的地方就在这里；</li>
+<li>第 20 行：将单例注入到单例中——没有什么特别之处；</li>
+<li>第 23 行：将请求作用域的 Bean 注入到单例中。启动时没有活动的请求，因此没有 <strong><em>[RequestService]</em></strong> 的实例可注入。于是，<em>[Spring]</em> 注入的是一个<strong>代理</strong> （中间人）：这个对象拥有与 <strong><em>[RequestService]</em></strong> 相同的方法，并把每次调用转发给<strong>当前</strong>请求的实例（按需创建）。这就是 <strong><em>[@RequestScope]</em></strong> 所做的事；</li>
+<li>第 25 行：将 prototype Bean 注入到单例中。<em>[Spring]</em> 创建一个实例……仅此一个，就在注入时。控制器会在整个生命周期内保留它：这个字段永远不会改变。这就是 prototype 作用域的<strong>陷阱</strong> ：它只会在每次向 <strong>[Spring]</strong> 容器<em>请求</em> 时才创建新实例，而单例只会请求其依赖一次；</li>
+<li>第 27 行：为了每次都获得新实例，控制器接收一个 <strong><em>[ObjectProvider&lt;ToolService&gt;]</em></strong>——这个对象能够在需要时请求一个 <strong><em>[ToolService]</em></strong> 实例，方式是向 <em>[Spring]</em> 调用其 <strong><em>[getObject()]</em></strong> 方法（第 50 行）；</li>
+<li>第 37 行：视图模型，一个 record（参见示例 03）；</li>
+<li>第 41 行：客户端作用域，一个存储在 Cookie 中的计数器。注解 <strong><em>[@CookieValue]</em></strong> 将参数与浏览器发送的 Cookie <strong><em>[myVisits]</em></strong> 关联；<strong><em>[required = false]</em></strong>：如果 Cookie 缺失（首次访问时），参数被设置为 <strong><em>[null]</em></strong> ；</li>
+<li>第 45 行：浏览器计数器加 1。方法 <strong><em>[toInteger]</em></strong> （第 55–61 行）将 Cookie 文本转换为整数；<strong><em>[Integer.parseInt]</em></strong> 在文本不是整数时抛出 <strong><em>[NumberFormatException]</em></strong> ，文本等于 <strong><em>[null]</em></strong>时同样如此：计数器随后重置为 0；</li>
+<li>第 46–48 行：用新值重新设置 Cookie。<strong><em>[ResponseCookie]</em></strong> 是 <em>[Spring]</em> 中的一个类，用于生成 <strong><em>[Set-Cookie]</em></strong> 标头的值：设置其特性（路径、<strong><em>[HttpOnly]</em></strong>、<strong><em>[SameSite]</em></strong>）的方法被依次调用，然后 <strong><em>[build()]</em></strong> 创建该对象。该标头由 <strong><em>[response.addHeader]</em></strong> 添加到响应中；</li>
+<li>第 49–50 行：将值传递给视图：应用程序计数器、当前请求的 <strong><em>[RequestService]</em></strong> 实例编号、被注入的 prototype 的实例编号、此刻请求的 prototype 的实例编号，以及客户端计数器。</li>
+</ul>
+<h3 id="614-视图">6.1.4. <span style="color: #1f4d78">视图</span></h3>
+<p>文件 <strong><em>[templates/scopes/scopes.html]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Scopes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/bootstrap/css/bootstrap.min.css"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container py-3"</span> <span class="na">th:object</span><span class="o">=</span><span class="s">"${model}"</span><span class="p">&gt;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"h3"</span><span class="p">&gt;</span>The scopes of data<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="cm">&lt;!--/* @requestService、@toolService：视图也向 Spring 请求这些 Bean，</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="cm">           during the SAME request */--&gt;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>application: [[*{total}]] visit(s) to the site, all browsers combined<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>request: instance no. [[*{instance}]] of RequestService (no. [[${@requestService.number}]] in the view),
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>        request received at [[${start}]]<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>prototype: instance no. [[*{injectedTool}]] (injected into the controller),
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>        no. [[*{requestedTool}]] (requested by the controller), no. [[${@toolService.number}]] (requested by the view)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>client: [[*{myVisits}]] visit(s) from this browser<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 9 行：<strong><em>[th:object]</em></strong> （参见示例 18 和 19）引用对象 [model]；子标签中的表达式 <strong><em>[*{...}]</em></strong> 引用它的属性：<strong><em>[*{total}]</em></strong> 等于 <strong><em>[${model.total}]</em></strong>；</li>
+<li>第 14 行：<strong><em>[[[...]]]</em></strong> 将表达式的值转义后插入文本中，就像 <strong><em>[th:text]</em></strong> 一样（参见示例 14）；</li>
+<li>第 15 行和第 18 行：表达式 <strong><em>[${@name}]</em></strong> 引用具有该名称的 Bean（参见示例 16）。视图则在与动作相同的请求期间向 <strong><em>[requestService] and [toolService]</em></strong> 请求 Bean，从 <em>[Spring]</em> 获取：这样我们就可以比较控制器和视图所收到的实例；</li>
+<li>第 16 行：由过滤器设置的请求属性。对于 <em>[Thymeleaf]</em>，请求属性与任何其他变量一样都是变量。</li>
+</ul>
+<h3 id="615-运行">6.1.5. <span style="color: #1f4d78">运行</span></h3>
+<p>一个页面，位于 URL<a href="http://localhost:5000/"><u><span style="color: #0563c1">http://localhost:5000/</span></u></a>：</p>
+<p><img src="images/10000000000002BE0000010F5C149EDE.png" width="428" height="165" style="width:11.322cm;height:4.371cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000010F5C149EDE.png" /></p>
+<p>让我们使用 <em>[curl]</em> 和两个 Cookie 文件 <strong><em>[a.txt]</em></strong> 与 <strong><em>[b.txt]</em></strong> 来模拟两个浏览器：<strong><em>[-b]</em></strong> 选项发送文件中的 Cookie，而 <strong><em>[-c]</em></strong> 选项将服务器设置的 Cookie 保存到文件中。浏览器 A 发出两次请求，然后浏览器 B 发出一次，之后 A 又发出最后一次请求（服务器刚刚重启过）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>curl -c a.txt -b a.txt http://localhost:5000/
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>curl -c a.txt -b a.txt http://localhost:5000/
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>curl -c b.txt -b b.txt http://localhost:5000/
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>curl -c a.txt -b a.txt http://localhost:5000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>browser A:
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>&lt;li&gt;application: 1 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>&lt;li&gt;request: instance no. 1 of RequestService (no. 1 in the view),
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>request received at 18:47:52.627&lt;/li&gt;
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>&lt;li&gt;prototype: instance no. 1 (injected into the controller),
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>no. 2 (requested by the controller), no. 3 (requested by the view)&lt;/li&gt;
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>&lt;li&gt;client: 1 visit(s) from this browser&lt;/li&gt;
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>browser A:
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>&lt;li&gt;application: 2 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>&lt;li&gt;request: instance no. 2 of RequestService (no. 2 in the view),
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>request received at 18:47:53.015&lt;/li&gt;
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>&lt;li&gt;prototype: instance no. 1 (injected into the controller),
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>no. 4 (requested by the controller), no. 5 (requested by the view)&lt;/li&gt;
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>&lt;li&gt;client: 2 visit(s) from this browser&lt;/li&gt;
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>browser B:
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>&lt;li&gt;application: 3 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a>&lt;li&gt;request: instance no. 3 of RequestService (no. 3 in the view),
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>request received at 18:47:53.099&lt;/li&gt;
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a>&lt;li&gt;prototype: instance no. 1 (injected into the controller),
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a>no. 6 (requested by the controller), no. 7 (requested by the view)&lt;/li&gt;
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a>&lt;li&gt;client: 1 visit(s) from this browser&lt;/li&gt;
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a>browser A:
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a>&lt;li&gt;application: 4 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a>&lt;li&gt;request: instance no. 4 of RequestService (no. 4 in the view),
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a>request received at 18:47:53.133&lt;/li&gt;
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a>&lt;li&gt;prototype: instance no. 1 (injected into the controller),
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>no. 8 (requested by the controller), no. 9 (requested by the view)&lt;/li&gt;
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a>&lt;li&gt;client: 3 visit(s) from this browser&lt;/li&gt;
+</code></pre></div></td></tr></table></div>
+<p>（只显示列表中的项目）。我们观察到：</p>
+<ul>
+<li>应用程序计数器统计所有访问：1、2、3、4；</li>
+<li>每个请求都有自己的 <strong><em>[RequestService]</em></strong> 实例：1、2、3、4。在一次请求期间，控制器（通过其代理）和视图访问的是<strong>同一个</strong>实例；</li>
+<li>注入到控制器中的 prototype 始终是 1 号：它在启动时随控制器一同创建，永远不会被替换。而<strong>请求的</strong> prototype 每次都是新的：控制器和视图收到两个不同的实例，每个请求都会创建两个新的实例；</li>
+<li>客户端计数器对每个浏览器是唯一的：A 有 3 次访问，B 有 1 次。</li>
+</ul>
+<p>文件 <strong><em>[a.txt]</em></strong>，由 <em>[curl]</em>维护，包含浏览器 A 的 Cookie：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a># Netscape HTTP Cookie File
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a># https://curl.se/docs/http-cookies.html
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a># This file was generated by libcurl! Edit at your own risk.
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>#HttpOnly_localhost    FALSE    /    FALSE    0    myVisits    3
+</code></pre></div></td></tr></table></div>
+<p>这个 Cookie 由客户端控制，客户端可以发送它想要的任何值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>curl -i -b "myVisits=41" http://localhost:5000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>HTTP/1.1 200
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>Set-Cookie: myVisits=42; Path=/; HttpOnly; SameSite=Lax
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>Content-Type: text/html;charset=UTF-8
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>&lt;!doctype html&gt;
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>&lt;html lang="en"&gt;
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>&lt;head&gt;
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>  &lt;meta charset="utf-8"&gt;
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>  &lt;title&gt;Scopes&lt;/title&gt;
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>  &lt;link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"&gt;
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>&lt;/head&gt;
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>&lt;body&gt;
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>  &lt;div class="container py-3"&gt;
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>    &lt;h1 class="h3"&gt;The scopes of data&lt;/h1&gt;
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>    &lt;ul&gt;
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>      &lt;li&gt;application: 5 visit(s) to the site, all browsers combined&lt;/li&gt;
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>      &lt;li&gt;request: instance no. 5 of RequestService (no. 5 in the view),
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a>        request received at 18:47:53.178&lt;/li&gt;
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>      &lt;li&gt;prototype: instance no. 1 (injected into the controller),
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a>        no. 10 (requested by the controller), no. 11 (requested by the view)&lt;/li&gt;
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a>      &lt;li&gt;client: 42 visit(s) from this browser&lt;/li&gt;
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a>    &lt;/ul&gt;
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a>  &lt;/div&gt;
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a>&lt;/body&gt;
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a>&lt;/html&gt;
+</code></pre></div></td></tr></table></div>
+<p>对于访问者计数器来说，这无关紧要。对于敏感数据（用户的身份、角色），服务器必须能够检测到篡改：第 8 章将展示如何做到这一点。</p>
+<p>由这些作用域可以得出一条规则：Bean 不得<strong>持有</strong>作用域更短的 Bean。直接接收请求作用域实例的单例会无限期地持有它，远远超出该实例为之创建的那个请求。<em>[ASP.NET Core]</em> 在开发模式下于启动时检查这条规则，如果违反就拒绝启动。<em>[Spring]</em> 采取不同的做法：对于请求作用域，<strong><em>[@RequestScope]</em></strong> 会注入一个代理，使注入变得安全；对于 prototype 作用域，它不做任何检查，我们刚刚已经看到了结果：一个表现得像单例的“prototype”。当确实需要新实例时，要通过 <em>[Spring]</em> 借助 <strong><em>[ObjectProvider]</em></strong> 来请求。</p>
+<p>在案例研究中：</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>作用域</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>数据</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>位置</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">应用程序</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">医生和客户列表、字典、待处理的验证码、尝试次数计数器</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">单例 Bean（<i><b>[ApplicationModel]</b></i>、<i><b>[Translator]</b></i>、<i><b>[CaptchaService]</b></i>、<i><b>[AttemptLimiterService]</b></i>……）；业务层和数据访问层同样是无状态的单例</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">请求</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">视图模型、已登录的用户</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">模型（<i><b>[Model]</b></i>），由 <i><b>[CommonModel]</b></i> 补充；来自 <i>[Spring Security]</i> 的安全上下文</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">客户端</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">身份验证令牌、语言、闪现消息</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Cookie</div></td></tr></table>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 禁止商业使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1794 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Spring MVC] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-springmvc-sept-2026/%E5%9B%BD%E9%99%85%E5%8C%96.html">
+      
+      
+        <link rel="prev" href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E6%9D%BF.html">
+      
+      
+        <link rel="next" href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5. 国际化 - [Spring MVC] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Spring MVC] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-国际化" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Spring MVC] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. 国际化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Spring MVC] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%AE%80%E4%BB%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8E%A7%E5%88%B6%E5%99%A8-%E5%8A%A8%E4%BD%9C%E4%B8%8E%E8%B7%AF%E7%94%B1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 控制器、动作与路由
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 动作模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E6%9D%BF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 视图及其模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E5%9B%BD%E9%99%85%E5%8C%96.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-示例-22双语应用程序" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. 示例 22：双语应用程序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1. 示例 22：双语应用程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-字典" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.1. 字典
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-翻译服务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.2. 翻译服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-在视图中翻译" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.3. 在视图中翻译
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#514-语言选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.4. 语言选择
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#515-视图" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.5. 视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#516-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.6. 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 请求的生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 身份验证与授权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%98%B6%E6%AE%B5%E6%80%A7%E5%B0%8F%E7%BB%93.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 阶段性小结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6-rdvmedecins-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 案例研究：RdvMedecins 应用程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5-国际化">5. <span style="color: #2e74b5">国际化</span></h1>
+<p>国际化应用程序以用户的语言显示其文本。案例研究提供法语和英语两种语言。原理很简单：视图不再包含文本，而是包含<strong>键</strong> （<strong><em>[MENU.HOME]</em></strong>），并且每种语言都有一个<strong>字典</strong> ，为每个键关联一段文本。所选语言存储在 Cookie 中。</p>
+<p><em>[Spring]</em> 有自己的翻译系统：<strong><em>[MessageSource]</em></strong> 接口，其标准实现读取诸如 <strong><em>[messages_fr.properties]</em></strong>、<strong><em>[messages_en.properties]</em></strong>…… 的文件。我们将保留这个接口，因为 <em>[Spring]</em> 和 <em>[Thymeleaf]</em> 都用它来进行翻译，但我们会自己实现它，使用一个读取 JSON 字典的小类：这些文件与案例研究的 <em>[ASP.NET Core MVC]</em> 和 <em>[NestJS]</em> 版本中的文件相同，其格式无需任何特殊工具即可读写。不过，我们会让 <em>[Spring MVC]</em> 来处理每个请求的语言选择：这是它的<strong>语言解析器</strong> （<strong><em>[LocaleResolver]</em></strong>）的职责，我们在示例 16 中已经遇到过它。</p>
+<h2 id="51-示例-22双语应用程序">5.1. <span style="color: #2e74b5">示例 22：双语应用程序</span></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>22-i18n/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── src/main/java/example22/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│   ├── config/
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>│   │   └── WebConfig.java
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>│   ├── controllers/
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>│   │   ├── LanguageController.java
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>│   │   └── PagesController.java
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>│   ├── translation/
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>│   │   ├── Formats.java
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>│   │   └── Translator.java
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>│   └── Example22Application.java
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>├── src/main/resources/
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>│   ├── i18n/
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>│   │   ├── en.json
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>│   │   └── fr.json
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>│   ├── static/css/
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>│   │   └── styles.css
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>│   ├── templates/
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>│   │   ├── fragments/
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>│   │   │   └── navbar.html
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>│   │   ├── pages/
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>│   │   │   ├── home.html
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>│   │   │   └── products.html
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>│   │   └── layout.html
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>│   └── application.properties
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>└── pom.xml
+</code></pre></div></td></tr></table></div>
+<p>文件 <strong><em>[pom.xml]</em></strong> （启动器 <em>[Thymeleaf]</em>）、<strong><em>[application.properties]</em></strong> （端口 5000）、<strong><em>[Example22Application.java]</em></strong> （启动类）和 <strong><em>[styles.css]</em></strong> 与之前的示例相同。</p>
+<h3 id="511-字典">5.1.1. <span style="color: #1f4d78">字典</span></h3>
+<p>文件 <strong><em>[src/main/resources/i18n/fr.json]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">"MENU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accueil"</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">"PRODUCTS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produits"</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bienvenue"</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="nt">"HELLO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bonjour {name} !"</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nt">"DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nous sommes le {date}."</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span><span class="nt">"PRODUCTS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nos produits"</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nt">"NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produit"</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="nt">"PRICE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prix"</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="nt">"COUNT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{n} produit(s) au catalogue."</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>文件 <strong><em>[src/main/resources/i18n/en.json]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">"MENU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nt">"PRODUCTS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Products"</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="nt">"HOME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Welcome"</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="nt">"HELLO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello {name}!"</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nt">"DATE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today is {date}."</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">  </span><span class="nt">"PRODUCTS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="nt">"TITLE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Our products"</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="nt">"NAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product"</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="nt">"PRICE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Price"</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="nt">"COUNT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{n} product(s) in the catalogue."</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>字典是一个 JSON 文件，按页面或主题组织：键 <strong><em>[HOME.HELLO]</em></strong> 指的是 [HOME] 部分中的文本 [HELLO]；</li>
+<li>第 8 行：文本可以包含用花括号括起来的参数，这些参数在翻译时被替换。不同语言的词序各不相同：这就是为什么文本不是通过简单地拼接已翻译的片段来生成的。</li>
+</ul>
+<p>字典放在 <strong><em>[src/main/resources]</em></strong> 中：<em>[Maven]</em> 会将该文件夹连同编译后的类一起复制到 <strong><em>[target/classes]</em></strong> 中。因此它们属于<strong>类路径</strong>——即 <em>[Java]</em> 搜索应用程序的类和资源所在的文件夹和归档文件的集合：程序将在这里读取它们，而不论从哪个文件夹启动。</p>
+<h3 id="512-翻译服务">5.1.2. <span style="color: #1f4d78">翻译服务</span></h3>
+<p><strong><em>[translation/Translator.java]</em></strong> 文件分为两部分。第一部分读取字典并进行翻译：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span>
+<span class="normal"><a href="#__codelineno-3-59">59</a></span>
+<span class="normal"><a href="#__codelineno-3-60">60</a></span>
+<span class="normal"><a href="#__codelineno-3-61">61</a></span>
+<span class="normal"><a href="#__codelineno-3-62">62</a></span>
+<span class="normal"><a href="#__codelineno-3-63">63</a></span>
+<span class="normal"><a href="#__codelineno-3-64">64</a></span>
+<span class="normal"><a href="#__codelineno-3-65">65</a></span>
+<span class="normal"><a href="#__codelineno-3-66">66</a></span>
+<span class="normal"><a href="#__codelineno-3-67">67</a></span>
+<span class="normal"><a href="#__codelineno-3-68">68</a></span>
+<span class="normal"><a href="#__codelineno-3-69">69</a></span>
+<span class="normal"><a href="#__codelineno-3-70">70</a></span>
+<span class="normal"><a href="#__codelineno-3-71">71</a></span>
+<span class="normal"><a href="#__codelineno-3-72">72</a></span>
+<span class="normal"><a href="#__codelineno-3-73">73</a></span>
+<span class="normal"><a href="#__codelineno-3-74">74</a></span>
+<span class="normal"><a href="#__codelineno-3-75">75</a></span>
+<span class="normal"><a href="#__codelineno-3-76">76</a></span>
+<span class="normal"><a href="#__codelineno-3-77">77</a></span>
+<span class="normal"><a href="#__codelineno-3-78">78</a></span>
+<span class="normal"><a href="#__codelineno-3-79">79</a></span>
+<span class="normal"><a href="#__codelineno-3-80">80</a></span>
+<span class="normal"><a href="#__codelineno-3-81">81</a></span>
+<span class="normal"><a href="#__codelineno-3-82">82</a></span>
+<span class="normal"><a href="#__codelineno-3-83">83</a></span>
+<span class="normal"><a href="#__codelineno-3-84">84</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example22.translation</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.InputStream</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Locale</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.MessageSource</span><span class="p">;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.MessageSourceResolvable</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.core.io.ClassPathResource</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tools.jackson.databind.JsonNode</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tools.jackson.databind.ObjectMapper</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="c1">// 翻译服务：JSON 字典，在启动时只读取一次。</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="c1">// 它实现了 Spring 的 MessageSource 接口，并命名为 [messageSource]：</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="c1">// 于是 Spring 将它用于所有翻译，Thymeleaf 将它用于视图中的</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="c1">// #{...} 表达式。</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="nd">@Component</span><span class="p">(</span><span class="s">"messageSource"</span><span class="p">)</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Translator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">MessageSource</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LANGUAGES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"fr"</span><span class="p">,</span><span class="w"> </span><span class="s">"en"</span><span class="p">);</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DEFAULT_LANGUAGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"en"</span><span class="p">;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="c1">// {name}：文本中的一个参数</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Pattern</span><span class="w"> </span><span class="n">PARAMETER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"\\{(\\w+)\\}"</span><span class="p">);</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="c1">// 语言 -&gt;（完整键 "HOME.HELLO" -&gt; 文本）</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dictionaries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Translator</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">        </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="p">();</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">LANGUAGES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">            </span><span class="c1">// 字典位于 src/main/resources/i18n 中，因此在类路径中</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">InputStream</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClassPathResource</span><span class="p">(</span><span class="s">"i18n/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">".json"</span><span class="p">).</span><span class="na">getInputStream</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">                </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="w">                </span><span class="n">flatten</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="na">readTree</span><span class="p">(</span><span class="n">stream</span><span class="p">),</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">dictionary</span><span class="p">);</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">                </span><span class="n">dictionaries</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">language</span><span class="p">,</span><span class="w"> </span><span class="n">dictionary</span><span class="p">);</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">    </span><span class="c1">// 与 [locale] 最接近的受支持语言："fr_FR" -&gt; "fr"；"de" -&gt; "en"</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">language</span><span class="p">(</span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">locale</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">locale</span><span class="p">.</span><span class="na">getLanguage</span><span class="p">();</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LANGUAGES</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">language</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DEFAULT_LANGUAGE</span><span class="p">;</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a>
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">    </span><span class="c1">// translate("HOME.HELLO", ["name", "Marie"], en) -&gt; "Hello Marie!"</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="c1">// 参数以（名称, 值）对的形式传入。</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">        </span><span class="c1">// 缺失的键会显示键本身：疏漏在屏幕上一目了然</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dictionaries</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">language</span><span class="p">(</span><span class="n">locale</span><span class="p">)).</span><span class="na">getOrDefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parameters</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">parameters</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">parameters</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="w">            </span><span class="n">values</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">parameters</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">),</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">parameters</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">]</span><span class="p">));</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="w">        </span><span class="c1">// 每个 {name} 都被同名参数的值所替换</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PARAMETER</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">replaceAll</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Matcher</span><span class="p">.</span><span class="na">quoteReplacement</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="na">getOrDefault</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="na">group</span><span class="p">())));</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73"></a>
+<a id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">    </span><span class="c1">// { "MENU": { "HOME": "Home" } } -&gt; { "MENU.HOME": "Home" }</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">flatten</span><span class="p">(</span><span class="n">JsonNode</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">JsonNode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">properties</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">property</span><span class="p">.</span><span class="na">getKey</span><span class="p">()</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">property</span><span class="p">.</span><span class="na">getKey</span><span class="p">();</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">isObject</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="w">                </span><span class="n">flatten</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">getValue</span><span class="p">(),</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81"></a><span class="w">                </span><span class="n">result</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">asString</span><span class="p">());</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来分析这段代码：</p>
+<ul>
+<li>第 24–25 行：该服务是一个 Bean（用 <strong><em>[@Component]</em></strong> 注解），因此是单例：文件只在启动时读取一次。它实现了 <strong><em>[MessageSource]</em></strong> 接口，该接口来自 <em>[Spring]</em> ，并按注解的指定命名为 <strong><em>[messageSource]</em></strong>。这个名称不是随意选择的：<em>[Spring]</em> 正是以这个名称查找应用程序的翻译服务。<em>[Spring Boot]</em>默认会创建一个（它会读取 <strong><em>[messages*.properties]</em></strong> 文件），但只要存在同名的 Bean，就不再创建；</li>
+<li>第 27–28 行：支持的语言和默认语言。<strong><em>[List.of]</em></strong> 创建一个只读列表；</li>
+<li>第 31 行：正则表达式 <strong><em>[\{(\w+)\}]</em></strong> （一个左花括号，一个或多个单词字符（被捕获），一个右花括号），用于识别文本中的参数。在 <em>[Java]</em> 字符串中，反斜杠写作 <strong><em>[\\]</em></strong>。<strong><em>[Pattern.compile]</em></strong> 一次性将其解析好；</li>
+<li>第 34 行：每种语言对应一个 <em>[Java]</em> 字典（<strong><em>[Map]</em></strong>），将每个完整的键（<strong><em>[HOME.HELLO]</em></strong>）与其文本关联起来；</li>
+<li>第 36–46 行：构造函数读取 JSON 文件。<strong><em>[ClassPathResource]</em></strong> 引用类路径中的文件（见上文）。<strong><em>[try (...)]</em></strong> 语句（称为<strong>“try-with-resources”语句</strong>）会在代码块结束时自动关闭在其括号中打开的流，即使发生错误也是如此。来自 <strong><em>[ObjectMapper]</em></strong> 对象的 <em>[Jackson]</em> 库（<em>[Spring]</em> 用于处理 JSON 的那个库）解析文本，并将其转换为 <strong><em>[JsonNode]</em></strong> 节点树；</li>
+<li>第 49–52 行：与任意给定语言最接近的受支持语言。<strong><em>[Locale]</em></strong> 对象属于 <em>[Java]</em> 类型，表示一种语言，可能还带有国家说明（<strong><em>[fr]</em></strong>、<strong><em>[en_US]</em></strong>……）；<strong><em>[getLanguage()]</em></strong> 提供其两个字母的代码。不受支持的语言（<strong><em>[de]</em></strong>）会返回默认语言；</li>
+<li>第 56–72 行：翻译。在所请求语言的字典中查找键；如果找不到，则显示键本身（<strong><em>[getOrDefault]</em></strong>）：遗漏的内容在屏幕上一目了然；</li>
+<li>第 65–68 行：参数存储在数组 <strong><em>[Object[]]</em></strong> 中，以（名称，值）对的形式：<strong><em>[[&quot;name&quot;, &quot;Marie&quot;]]</em></strong>。循环把它们整理成字典 <strong><em>[name -&gt; value]</em></strong>。我们稍后会看到为什么选择这种有些不寻常的格式；</li>
+<li>第 70–71 行：<strong><em>[replaceAll]</em></strong> 将文本中找到的每个 <strong><em>[{name}]</em></strong> 参数替换为 lambda 的结果：即同名参数的值（<strong><em>[r.group(1)]</em></strong> 是括号中捕获的部分），或者在没有值时保持原样的参数本身（<strong><em>[r.group()]</em></strong> 是找到的整个文本）。<strong><em>[Matcher.quoteReplacement]</em></strong> 保护值中可能包含的 <strong><em>[$]</em></strong> 和 <strong><em>[\]</em></strong> 字符，否则它们对 <strong><em>[replaceAll]</em></strong> 具有特殊含义；</li>
+<li>第 75–84 行：该方法将 JSON“扁平化”：对象 <strong><em>[&quot;HOME&quot;: { &quot;HELLO&quot;: &quot;...&quot; }]</em></strong> 生成键 <strong><em>[HOME.HELLO]</em></strong>。它调用自身（<strong>递归</strong>方法）来遍历嵌套的对象。<strong><em>[properties()]</em></strong> 返回 JSON 对象的（名称，值）对；<strong><em>[asString()]</em></strong> 返回文本的值。</li>
+</ul>
+<p>第二部分实现 <strong><em>[MessageSource]</em></strong> 接口：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="w">    </span><span class="c1">// —————————————————————————— MessageSource 接口</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMessage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">defaultMessage</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">translate</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMessage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">translate</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="p">);</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">    </span><span class="c1">// 由多个可能的代码描述的消息（验证错误）：</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="c1">// 字典中出现的第一个代码优先</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMessage</span><span class="p">(</span><span class="n">MessageSourceResolvable</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dictionary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dictionaries</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">language</span><span class="p">(</span><span class="n">locale</span><span class="p">));</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">codes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getCodes</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getCodes</span><span class="p">();</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">codes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dictionary</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">code</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">translate</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getArguments</span><span class="p">(),</span><span class="w"> </span><span class="n">locale</span><span class="p">);</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">defaultText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getDefaultMessage</span><span class="p">();</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">defaultText</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">defaultText</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">codes</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">codes</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="p">);</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 3–11 行：两个方法，将代码（键）及其参数翻译成指定的语言；它们调用 <strong><em>[translate]</em></strong>。注解 <strong><em>[@Override]</em></strong> 指示编译器验证确实重写了接口的方法；</li>
+<li>第 15–26 行：第三个方法接收一个 <strong><em>[MessageSourceResolvable]</em></strong> 对象，它用<strong>多个</strong>可能的代码来描述一条消息，从最具体的到最通用的。<em>[Spring]</em> 就是这样描述验证错误的（参见示例 19）：约束 <strong><em>[@NotBlank]</em></strong> 作用于对象 [person] 的字段 [name] 会产生代码 <strong><em>[NotBlank.person.name], [NotBlank.name]</em></strong>、<strong><em>[NotBlank]</em></strong>……字典中存在的第一个代码优先；如果一个都不存在，则返回默认消息，或者第一个代码。案例研究利用这一点来翻译其错误消息。</li>
+</ul>
+<p>在 <em>[Spring]</em> 中，消息参数的常用格式是按位置的：<strong><em>[Hello {0}!]</em></strong>，其中第一个参数替换 <strong><em>[{0}]</em></strong>。我们更喜欢<strong>具名</strong>参数，它们在字典中更易读（<strong><em>[Hello {name}!]</em></strong>），并且与案例研究其他版本中的参数一致。然而，<strong><em>[MessageSource]</em></strong> 接口只传递一个参数数组——因此才有了（名称，值）对的约定。</p>
+<h3 id="513-在视图中翻译">5.1.3. <span style="color: #1f4d78">在视图中翻译</span></h3>
+<p>在 <em>[Thymeleaf]</em> 视图中，表达式 <strong><em>[#{KEY}]</em></strong>——在示例 14 中已作过简单介绍——是将键 [KEY]翻译成请求语言的结果：<em>[Thymeleaf]</em> 调用 Bean <strong><em>[messageSource]</em></strong>，也就是我们的 <strong><em>[Translator]</em></strong>。参数放在括号中传递：<strong><em>[#{HOME.HELLO(&#x27;name&#x27;, ${name})}]</em></strong> 会调用 <strong><em>[getMessage(&quot;HOME.HELLO&quot;, [&quot;name&quot;, &quot;Marie&quot;], language)]</em></strong>。视图端无需编写任何类——这正是实现了 <em>[Spring]</em> 接口的好处。</p>
+<p>剩下的是日期和金额，它们不需要翻译，而是要根据语言进行<strong>格式化</strong>。文件 <strong><em>[translation/Formats.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example22.translation</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.math.BigDecimal</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.NumberFormat</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.FormatStyle</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Currency</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.i18n.LocaleContextHolder</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="c1">// 日期和金额，按请求的语言格式化（参见示例 16）</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="nd">@Component</span><span class="p">(</span><span class="s">"formats"</span><span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Formats</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="c1">// 以完整文字表示的日期</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">longDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="w"> </span><span class="n">date</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">date</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofLocalizedDate</span><span class="p">(</span><span class="n">FormatStyle</span><span class="p">.</span><span class="na">FULL</span><span class="p">).</span><span class="na">withLocale</span><span class="p">(</span><span class="n">LocaleContextHolder</span><span class="p">.</span><span class="na">getLocale</span><span class="p">()));</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="w">    </span><span class="c1">// 以欧元表示的金额</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">money</span><span class="p">(</span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="w">        </span><span class="n">NumberFormat</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getCurrencyInstance</span><span class="p">(</span><span class="n">LocaleContextHolder</span><span class="p">.</span><span class="na">getLocale</span><span class="p">());</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="w">        </span><span class="n">format</span><span class="p">.</span><span class="na">setCurrency</span><span class="p">(</span><span class="n">Currency</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"EUR"</span><span class="p">));</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">format</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>这大体上就是示例 16 中的那个类：</p>
+<ul>
+<li>第 14 行：一个名为 <strong><em>[formats]</em></strong> 的 Bean，视图以 <strong><em>[${@formats.longDate(...)}]</em></strong> 的形式引用它；</li>
+<li>第 19 行和第 24 行：<strong><em>[LocaleContextHolder.getLocale()]</em></strong> 指明当前请求的语言。我们稍后会看到是谁设置它的；</li>
+<li>第 19 行：长格式的日期（<strong><em>[FormatStyle.FULL]</em></strong>），使用该语言；</li>
+<li>第 24–26 行：金额，采用该语言的货币格式，无论语言如何都以欧元表示。</li>
+</ul>
+<h3 id="514-语言选择">5.1.4. <span style="color: #1f4d78">语言选择</span></h3>
+<p>文件 <strong><em>[config/WebConfig.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span>
+<span class="normal"><a href="#__codelineno-6-26">26</a></span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span>
+<span class="normal"><a href="#__codelineno-6-30">30</a></span>
+<span class="normal"><a href="#__codelineno-6-31">31</a></span>
+<span class="normal"><a href="#__codelineno-6-32">32</a></span>
+<span class="normal"><a href="#__codelineno-6-33">33</a></span>
+<span class="normal"><a href="#__codelineno-6-34">34</a></span>
+<span class="normal"><a href="#__codelineno-6-35">35</a></span>
+<span class="normal"><a href="#__codelineno-6-36">36</a></span>
+<span class="normal"><a href="#__codelineno-6-37">37</a></span>
+<span class="normal"><a href="#__codelineno-6-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example22.config</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Locale</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.LocaleResolver</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.i18n.CookieLocaleResolver</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry</span><span class="p">;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.config.annotation.WebMvcConfigurer</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="c1">// Spring MVC 的配置，已作补充</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nd">@Configuration</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">WebConfig</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebMvcConfigurer</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">    </span><span class="c1">// 各示例共享的 Bootstrap：examples/common/bootstrap 文件夹</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">    </span><span class="c1">// 通过 URL /bootstrap/... 提供</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addResourceHandlers</span><span class="p">(</span><span class="n">ResourceHandlerRegistry</span><span class="w"> </span><span class="n">registry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">addResourceHandler</span><span class="p">(</span><span class="s">"/bootstrap/**"</span><span class="p">)</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">                </span><span class="c1">// "file:"：磁盘上的一个文件夹，相对于当前文件夹。尝试</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">                </span><span class="c1">// 两次：从示例所在文件夹启动，或从 [examples] 启动</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="w">                </span><span class="p">.</span><span class="na">addResourceLocations</span><span class="p">(</span><span class="s">"file:../common/bootstrap/"</span><span class="p">,</span><span class="w"> </span><span class="s">"file:common/bootstrap/"</span><span class="p">);</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="w">    </span><span class="c1">// 每个请求的语言：取自 [language] Cookie，否则为英语。</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">    </span><span class="c1">// 该 Bean 必须命名为 [localeResolver]：Spring 正是以这个名称查找它的。</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="w">    </span><span class="nd">@Bean</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">LocaleResolver</span><span class="w"> </span><span class="nf">localeResolver</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="w">        </span><span class="n">CookieLocaleResolver</span><span class="w"> </span><span class="n">resolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CookieLocaleResolver</span><span class="p">(</span><span class="s">"language"</span><span class="p">);</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a><span class="w">        </span><span class="n">resolver</span><span class="p">.</span><span class="na">setDefaultLocale</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="w">        </span><span class="n">resolver</span><span class="p">.</span><span class="na">setCookieMaxAge</span><span class="p">(</span><span class="n">Duration</span><span class="p">.</span><span class="na">ofDays</span><span class="p">(</span><span class="mi">365</span><span class="p">));</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="w">        </span><span class="n">resolver</span><span class="p">.</span><span class="na">setCookieHttpOnly</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35"></a><span class="w">        </span><span class="n">resolver</span><span class="p">.</span><span class="na">setCookieSameSite</span><span class="p">(</span><span class="s">"Lax"</span><span class="p">);</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">resolver</span><span class="p">;</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来分析这段代码：</p>
+<ul>
+<li>第 19–25 行：来自 <em>[Bootstrap]</em> 的文件，与之前的示例相同；</li>
+<li>第 29–37 行：Bean <strong><em>[localeResolver]</em></strong> （这是 <em>[Spring MVC]</em> 用来查找它的名称）为每个请求设置语言。在每个请求开始时，<em>[Spring MVC]</em> 向它询问语言，并在请求期间将其存储在 <strong><em>[LocaleContextHolder]</em></strong> 中：<strong><em>[Formats]</em></strong> 的方法、<strong><em>[#{...}]</em></strong> 表达式（来自 <em>[Thymeleaf]</em>）以及视图中的 <strong><em>[#locale]</em></strong> 变量都从那里获取它；</li>
+<li>第 31 行：一个 <strong><em>[CookieLocaleResolver]</em></strong>，由 <em>[Spring]</em> 提供，它从 Cookie 中读取语言，这里该 Cookie 名为 [language]。Cookie 中包含语言代码（<strong><em>[en]</em></strong>）；</li>
+<li>第 32 行：没有 Cookie 时，语言为英语。请注意，此时浏览器的语言（标头 <strong><em>[Accept-Language]</em></strong>）会被忽略：用户通过 FR / EN 按钮选择语言；</li>
+<li>第 33–35 行：更改语言时 <strong><em>[CookieLocaleResolver]</em></strong> 所写入的 Cookie 的特性：一年的有效期；<strong><em>[HttpOnly]</em></strong> （页面上的 <em>[JavaScript]</em> 无法读取它）；<strong><em>[SameSite=Lax]</em></strong> （来自其他站点的 POST 请求不会发送它）。</li>
+</ul>
+<p><strong><em>[controllers/LanguageController.java]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span>
+<span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span>
+<span class="normal"><a href="#__codelineno-7-33">33</a></span>
+<span class="normal"><a href="#__codelineno-7-34">34</a></span>
+<span class="normal"><a href="#__codelineno-7-35">35</a></span>
+<span class="normal"><a href="#__codelineno-7-36">36</a></span>
+<span class="normal"><a href="#__codelineno-7-37">37</a></span>
+<span class="normal"><a href="#__codelineno-7-38">38</a></span>
+<span class="normal"><a href="#__codelineno-7-39">39</a></span>
+<span class="normal"><a href="#__codelineno-7-40">40</a></span>
+<span class="normal"><a href="#__codelineno-7-41">41</a></span>
+<span class="normal"><a href="#__codelineno-7-42">42</a></span>
+<span class="normal"><a href="#__codelineno-7-43">43</a></span>
+<span class="normal"><a href="#__codelineno-7-44">44</a></span>
+<span class="normal"><a href="#__codelineno-7-45">45</a></span>
+<span class="normal"><a href="#__codelineno-7-46">46</a></span>
+<span class="normal"><a href="#__codelineno-7-47">47</a></span>
+<span class="normal"><a href="#__codelineno-7-48">48</a></span>
+<span class="normal"><a href="#__codelineno-7-49">49</a></span>
+<span class="normal"><a href="#__codelineno-7-50">50</a></span>
+<span class="normal"><a href="#__codelineno-7-51">51</a></span>
+<span class="normal"><a href="#__codelineno-7-52">52</a></span>
+<span class="normal"><a href="#__codelineno-7-53">53</a></span>
+<span class="normal"><a href="#__codelineno-7-54">54</a></span>
+<span class="normal"><a href="#__codelineno-7-55">55</a></span>
+<span class="normal"><a href="#__codelineno-7-56">56</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example22.controllers</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URI</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Locale</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.HttpStatus</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Controller</span><span class="p">;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.PathVariable</span><span class="p">;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.server.ResponseStatusException</span><span class="p">;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.LocaleResolver</span><span class="p">;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example22.translation.Translator</span><span class="p">;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.http.HttpServletRequest</span><span class="p">;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.servlet.http.HttpServletResponse</span><span class="p">;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="nd">@Controller</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LanguageController</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">LocaleResolver</span><span class="w"> </span><span class="n">localeResolver</span><span class="p">;</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">LanguageController</span><span class="p">(</span><span class="n">LocaleResolver</span><span class="w"> </span><span class="n">localeResolver</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">localeResolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">localeResolver</span><span class="p">;</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a>
+<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">    </span><span class="c1">// GET /language/fr：将选择存入 Cookie，然后返回上一个页面</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/language/{language}"</span><span class="p">)</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">language</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Translator</span><span class="p">.</span><span class="na">LANGUAGES</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">language</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResponseStatusException</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">NOT_FOUND</span><span class="p">);</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">        </span><span class="c1">// LocaleResolver 自己写入其 Cookie（名称、值、有效期等）</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">        </span><span class="n">localeResolver</span><span class="p">.</span><span class="na">setLocale</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="n">language</span><span class="p">));</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">originPage</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36"></a>
+<a id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">    </span><span class="c1">// 我们来自的页面（Referer 头），只保留其路径：</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">    </span><span class="c1">// 如果重定向到从请求中取得的完整地址，</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">    </span><span class="c1">// 就可能把用户送到另一个站点（“开放重定向”漏洞）</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">originPage</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">referer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="s">"Referer"</span><span class="p">);</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">            </span><span class="n">URI</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">URI</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">referer</span><span class="p">);</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">getRawPath</span><span class="p">();</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">            </span><span class="c1">// "//site.com/..." 会被浏览器理解为另一个站点上的地址</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">            </span><span class="c1">// ：同样予以拒绝</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">path</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">"//"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">"/"</span><span class="p">;</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">getRawQuery</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"?"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">getRawQuery</span><span class="p">();</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">RuntimeException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="w">            </span><span class="c1">// 没有 Referer 头（NullPointerException），或地址无效</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">"/"</span><span class="p">;</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-56" name="__codelineno-7-56"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来分析这段代码：</p>
+<ul>
+<li>第 20–24 行：控制器通过依赖注入接收 <strong><em>[LocaleResolver]</em></strong> ；</li>
+<li>第 27–35 行：<strong><em>[GET /language/fr]</em></strong> 将所选语言存储在 Cookie 中，然后重定向到用户来源的页面。未知的语言会触发 404 错误（<strong><em>[ResponseStatusException]</em></strong>，参见示例 21）；</li>
+<li>第 33 行：我们不自己创建 Cookie；而是请求 <strong><em>[LocaleResolver]</em></strong> 更改语言，由它按照 <strong><em>[WebConfig]</em></strong> 中指定的名称和特性写入 Cookie。<strong><em>[Locale.forLanguageTag(&quot;en&quot;)]</em></strong> 为英语创建 <strong><em>[Locale]</em></strong> 对象；</li>
+<li>第 34 行：<strong><em>[redirect:]</em></strong> 请求重定向（参见示例 04）；</li>
+<li>第 40–55 行：原始页面由标头 <strong><em>[Referer]</em></strong> 指明，浏览器在点击链接时会添加该标头。我们只保留路径和参数（<strong><em>[getRawPath]</em></strong>、<strong><em>[getRawQuery]</em></strong>：保持其在地址中出现的样子，不进行解码）。如果重定向到请求中的完整 URL，恶意网站就可以创建这样一个链接：经过我们的站点后，将用户送往该恶意网站（这种漏洞称为 <em>[open redirect]</em>）；</li>
+<li>第 45–49 行：以两个斜杠开头的路径也会被拒绝：浏览器会把 <strong><em>[//pirate.example/trap]</em></strong> 解释为地址 <strong><em>[http://pirate.example/trap]</em></strong>，即另一个站点；</li>
+<li>第 51–54 行：没有标头 <strong><em>[Referer]</em></strong> 时，<strong><em>[URI.create(null)]</em></strong> 会触发 <strong><em>[NullPointerException]</em></strong>；地址无效时，会触发 <strong><em>[IllegalArgumentException]</em></strong>。两者都派生自 <strong><em>[RuntimeException]</em></strong>：这会让你回到主页。</li>
+</ul>
+<h3 id="515-视图">5.1.5. <span style="color: #1f4d78">视图</span></h3>
+<p>文件 <strong><em>[templates/layout.html]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="cm">&lt;!--/* #locale：请求的语言；其两个字母的代码：#locale.language */--&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span> <span class="na">th:lang</span><span class="o">=</span><span class="s">"${#locale.language}"</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">"page(title, content)"</span><span class="p">&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>  <span class="cm">&lt;!--/* 标题是一个键，由页面提供，由布局翻译 */--&gt;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>  <span class="p">&lt;</span><span class="nt">title</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{${title}}"</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/bootstrap/css/bootstrap.min.css"</span><span class="p">&gt;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/css/styles.css"</span><span class="p">&gt;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container py-3"</span><span class="p">&gt;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{fragments/navbar :: navbar}"</span><span class="p">&gt;&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"${content}"</span><span class="p">&gt;&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 3 行：模板（参见示例 15）是一个带有两个参数的片段：页面标题及其内容。页面的 <strong><em>[lang]</em></strong> 属性反映所选的语言（对屏幕阅读器和拼写检查器很有用）：<strong><em>[#locale]</em></strong> 是请求的语言，而 <strong><em>[#locale.language] is</em></strong> 它的两个字母的代码；</li>
+<li>第 7 行：页面标题是一个键，由页面提供并由模板翻译：在 <strong><em>[#{${title}}]</em></strong> 中，键本身是一个表达式的结果；</li>
+<li>第 13 行：导航栏，来自另一个文件的片段。</li>
+</ul>
+<p>文件 <strong><em>[templates/fragments/navbar.html]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar navbar-expand bg-light rounded mb-3 px-3"</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">"navbar"</span><span class="p">&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"navbar-nav me-auto"</span><span class="p">&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>    <span class="cm">&lt;!--/* #{KEY}：键的翻译，使用请求的语言 */--&gt;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"nav-link"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{MENU.HOME}"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"nav-link"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/products"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{MENU.PRODUCTS}"</span><span class="p">&gt;</span>Products<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>  <span class="cm">&lt;!--/* 当前语言高亮显示 */--&gt;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn-group btn-group-sm"</span> <span class="na">th:with</span><span class="o">=</span><span class="s">"language=${#locale.language}"</span><span class="p">&gt;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn"</span> <span class="na">th:classappend</span><span class="o">=</span><span class="s">"${language == 'fr'} ? 'btn-primary' : 'btn-outline-primary'"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/language/fr"</span><span class="p">&gt;</span>FR<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn"</span> <span class="na">th:classappend</span><span class="o">=</span><span class="s">"${language == 'en'} ? 'btn-primary' : 'btn-outline-primary'"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/language/en"</span><span class="p">&gt;</span>EN<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 4–5 行：两段被翻译的文本。写在标签内的文本（[Home]）只有在直接用浏览器打开该文件时才会显示；<em>[Thymeleaf]</em> 会用翻译替换它；</li>
+<li>第 8 行：<strong><em>[th:with]</em></strong> 定义一个局部变量 <strong><em>[language]</em></strong>，可在该标签及其子标签中使用；</li>
+<li>第 9–10 行：两个链接（更改语言不会修改任何应用程序数据：使用 GET 就足够了），当前语言会高亮显示：<strong><em>[th:classappend]</em></strong> 会在标签原有的 CSS 类之外再添加一个类。</li>
+</ul>
+<p>文件 <strong><em>[templates/pages/home.html]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{layout :: page('HOME.TITLE', ~{::main})}"</span><span class="p">&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{HOME.TITLE}"</span><span class="p">&gt;</span>Welcome<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>  <span class="cm">&lt;!--/* 参数：（参数名称, 值）这一对 */--&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{HOME.HELLO('name', ${name})}"</span><span class="p">&gt;</span>Hello Marie!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>  <span class="cm">&lt;!--/* 日期先被格式化，然后作为 [date] 参数传入 */--&gt;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{HOME.DATE('date', ${@formats.longDate(today)})}"</span><span class="p">&gt;</span>Today is...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 2 行：页面调用模板，使用键作为其标题和内容（<strong><em>[main]</em></strong> 标签）；</li>
+<li>第 7 行：一个参数，以（名称，值）对的形式传递；</li>
+<li>第 9 行：日期先由 <strong><em>[formats]</em></strong> Bean 格式化，然后作为 <strong><em>[date]</em></strong> 参数传递给消息。</li>
+</ul>
+<p><strong><em>[templates/pages/products.html]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{layout :: page('PRODUCTS.TITLE', ~{::main})}"</span><span class="p">&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{PRODUCTS.TITLE}"</span><span class="p">&gt;</span>Our products<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>  <span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">"table table-sm w-auto"</span><span class="p">&gt;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">th</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{PRODUCTS.NAME}"</span><span class="p">&gt;</span>Product<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">th</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-end"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{PRODUCTS.PRICE}"</span><span class="p">&gt;</span>Price<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>    <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>      <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">th:each</span><span class="o">=</span><span class="s">"product : ${products}"</span><span class="p">&gt;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"${product.name}"</span><span class="p">&gt;</span>Keyboard<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">"text-end"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"${@formats.money(product.price)}"</span><span class="p">&gt;</span>€25.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>    <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>  <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>  <span class="p">&lt;</span><span class="nt">p</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"#{PRODUCTS.COUNT('n', ${#lists.size(products)})}"</span><span class="p">&gt;</span>3 product(s) in the catalogue.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 11 行：金额，根据语言进行格式化；</li>
+<li>第 15 行：数值参数：<strong><em>[#lists.size]</em></strong> 指明列表的大小；<strong><em>[Translator]</em></strong> 将该值转换为字符串（<strong><em>[String.valueOf]</em></strong>）。</li>
+</ul>
+<p>文件 <strong><em>[controllers/PagesController.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example22.controllers</span><span class="p">;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.math.BigDecimal</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Controller</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ui.Model</span><span class="p">;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="c1">// 操作对语言一无所知：它们提供数据，</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="c1">// 由视图进行翻译和格式化</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="nd">@Controller</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PagesController</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Product</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">home</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Marie"</span><span class="p">);</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"today"</span><span class="p">,</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">));</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"pages/home"</span><span class="p">;</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a>
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/products"</span><span class="p">)</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">products</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"products"</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="s">"Keyboard"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">(</span><span class="s">"25"</span><span class="p">)),</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="s">"Mouse"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">(</span><span class="s">"12.5"</span><span class="p">)),</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="s">"Screen"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BigDecimal</span><span class="p">(</span><span class="s">"1149"</span><span class="p">))));</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"pages/products"</span><span class="p">;</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>动作与语言无关：它们提供数据，而由视图负责翻译和格式化。价格是一个 <strong><em>[BigDecimal]</em></strong>，这种用于精确十进制数的 <em>[Java]</em> 类型适合表示货币金额（第 16 行）。主页上的日期是固定日期，即 2026 年 9 月 23 日（第 22 行），而不是当前日期：因此，下面的结果不取决于运行示例的日期。</p>
+<h3 id="516-运行">5.1.6. <span style="color: #1f4d78">运行</span></h3>
+<p>英语（尚无 Cookie），位于 URL<a href="http://localhost:5000/"><u><span style="color: #0563c1"> http://localhost:5000/</span></u></a> 和<a href="http://localhost:5000/produits"><u><span style="color: #0563c1"> http://localhost:5000/products</span></u></a>：</p>
+<p><img src="images/10000000000002BE00000110792D72E5.png" width="428" height="166" style="width:11.322cm;height:4.387cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE00000110792D72E5.png" /></p>
+<p><img src="images/10000000000002BE0000017CA7F04113.png" width="428" height="232" style="width:11.322cm;height:6.13cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000017CA7F04113.png" /></p>
+<p>点击语言按钮（这里是 EN），用 [curl] 模拟（<strong><em>[-H]</em></strong> 选项添加了浏览器本应发送的 <strong><em>[Referer]</em></strong> 标头）：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>curl -i -H "Referer: http://localhost:5000/products" http://localhost:5000/language/en
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>HTTP/1.1 302
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>Set-Cookie: language=en; Path=/; Max-Age=31536000; Expires=Sat, 25 Sep 2027 16:49:23 GMT; HttpOnly; SameSite=Lax
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>Location: http://localhost:5000/products
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>Content-Length: 0
+</code></pre></div></td></tr></table></div>
+<p><strong><em>[CookieLocaleResolver]</em></strong> 设置 [language] Cookie，其值为 <strong><em>[en]</em></strong>，并带有所要求的特性（<strong><em>[Max-Age]</em></strong> 和 <strong><em>[Expires]</em></strong> 都指定生存期，分别用于较旧和较新的浏览器）。重定向返回原始页面（<em>[Tomcat]</em>；服务器已将路径 [/products] 扩展为完整地址）。点击 FR 的效果相同（Cookie [language=fr]）：页面现在是法语：</p>
+<p><img src="images/10000000000002BE0000017C879EBB21.png" width="428" height="232" style="width:11.322cm;height:6.13cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000017C879EBB21.png" /></p>
+<p><img src="images/10000000000002BE0000011085811ACC.png" width="428" height="166" style="width:11.322cm;height:4.387cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000011085811ACC.png" /></p>
+<p>日期和金额也随之变化：“mercredi 23 septembre 2026”“1 149,00 €”。</p>
+<p>试图利用我们重定向的恶意网站只会看到我们自己站点的页面：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>curl -i -H "Referer: https://pirate.example/trap?x=1" http://localhost:5000/language/fr
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>curl -i -H "Referer: https://pirate.example//pirate.example/trap" http://localhost:5000/language/fr
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span>
+<span class="normal"><a href="#__codelineno-16-7">7</a></span>
+<span class="normal"><a href="#__codelineno-16-8">8</a></span>
+<span class="normal"><a href="#__codelineno-16-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>HTTP/1.1 302
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>Set-Cookie: language=fr; Path=/; Max-Age=31536000; Expires=Sat, 25 Sep 2027 16:49:24 GMT; HttpOnly; SameSite=Lax
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>Location: http://localhost:5000/trap?x=1
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>Content-Length: 0
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>HTTP/1.1 302
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>Set-Cookie: language=fr; Path=/; Max-Age=31536000; Expires=Sat, 25 Sep 2027 16:49:24 GMT; HttpOnly; SameSite=Lax
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>Location: http://localhost:5000/
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>Content-Length: 0
+</code></pre></div></td></tr></table></div>
+<p>不受支持的语言：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>curl -i http://localhost:5000/language/de
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>HTTP/1.1 404
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>Content-Type: application/json
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>{"timestamp":"2026-09-25T16:49:23.993Z","status":404,"error":"Not Found","message":"404 NOT_FOUND","path":"/language/de"}
+</code></pre></div></td></tr></table></div>
+<p>来自 <em>[Spring Boot]</em> 的默认错误响应：对 <em>[curl]</em> 是 JSON，对浏览器是 HTML 页面。第 7 章将展示如何用我们自己的页面替换它。</p>
+<p>最后，请记住 Cookie 是由客户端控制的。手动创建的 <strong><em>[language=de]</em></strong> Cookie 会被 <strong><em>[CookieLocaleResolver]</em></strong> 接受：文本仍然是英语（[Translator] 的默认语言），但日期以德语格式显示：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>curl -b "language=de" http://localhost:5000/
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"de"</span><span class="p">&gt;</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hello Marie!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Today is Mittwoch, 23. September 2026.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>（只显示页面的三行）。这没什么大不了：用户只是在愚弄自己。</p>
+<p>案例研究正是以这种方式进行的，只是使用了更完整的字典（<strong><em>[i18n/fr.json]</em></strong> 和 <strong><em>[i18n/en.json]</em></strong>）：同样的 Bean <strong><em>[messageSource]</em></strong>，同样的 <strong><em>[CookieLocaleResolver]</em></strong>，同样的控制器 <strong><em>[/language/{language}]</em></strong>。唯一的区别是，业务层和 Web 层生成的错误消息也是键，由视图在最后一刻进行翻译。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 禁止商业使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

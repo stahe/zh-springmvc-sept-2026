@@ -1,0 +1,2027 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="[Spring MVC] Web 框架分步入门">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/zh-springmvc-sept-2026/%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html">
+      
+      
+        <link rel="prev" href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html">
+      
+      
+        <link rel="next" href="%E9%98%B6%E6%AE%B5%E6%80%A7%E5%B0%8F%E7%BB%93.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>9. 分层架构与数据访问 - [Spring MVC] Web 框架分步入门</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "[Spring MVC] Web 框架分步入门";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-分层架构与数据访问" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-header__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Spring MVC] Web 框架分步入门
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. 分层架构与数据访问
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="[Spring MVC] Web 框架分步入门" class="md-nav__button md-logo" aria-label="[Spring MVC] Web 框架分步入门" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    [Spring MVC] Web 框架分步入门
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/zh-springmvc-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%AE%80%E4%BB%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%8E%A7%E5%88%B6%E5%99%A8-%E5%8A%A8%E4%BD%9C%E4%B8%8E%E8%B7%AF%E7%94%B1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 控制器、动作与路由
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%9E%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 动作模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%A7%86%E5%9B%BE%E5%8F%8A%E5%85%B6%E6%A8%A1%E6%9D%BF.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 视图及其模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E5%9B%BD%E9%99%85%E5%8C%96.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 国际化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%95%B0%E6%8D%AE%E4%BD%9C%E7%94%A8%E5%9F%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 数据作用域
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%AF%B7%E6%B1%82%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 请求的生命周期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. 身份验证与授权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. 分层架构与数据访问
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-示例-28三层架构的人员管理系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1. 示例 28：三层架构的人员管理系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.1. 示例 28：三层架构的人员管理系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#911-数据库" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.1. 数据库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#912-配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.2. 配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#913-person-实体" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.3. Person 实体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#914-dao-层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.4. DAO 层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#915-业务层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.5. 业务层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#916-web-层" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.6. Web 层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#917-运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1.7. 运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%98%B6%E6%AE%B5%E6%80%A7%E5%B0%8F%E7%BB%93.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. 阶段性小结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6-rdvmedecins-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. 案例研究：RdvMedecins 应用程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E7%BB%93%E8%AE%BA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. 结论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E9%99%84%E5%BD%95.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. 附录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-分层架构与数据访问">9. <span style="color: #2e74b5">分层架构与数据访问</span></h1>
+<p>之前的示例把数据存储在内存中。真实的应用程序把数据存储在数据库中，并被组织成多个<strong>层</strong> （参见引言中的图）：</p>
+<ul>
+<li><strong>Web</strong> 层（控制器、视图）：读取请求，调用业务层，选择视图；</li>
+<li><strong>业务</strong>层：业务规则；</li>
+<li><strong>DAO</strong> （<em>[Data Access Object]</em>）层：数据库查询。</li>
+</ul>
+<p>每一层只了解它下面的那一层，并且尽可能少地了解其细节：Web 层不知道 SQL，业务层不知道 HTML。这种分离使每一层都更容易理解、测试和演进。示例 28 将其应用于管理一个人员列表：这是案例研究中医生和客户管理的缩小版。</p>
+<p>在 <em>[Java]</em> 中，数据库访问被组织成多个层次：</p>
+<ul>
+<li><em>[JDBC]</em> （<em>[Java Database Connectivity]</em>）是 <em>[Java]</em> 向数据库发送 SQL 命令的标准接口。每个数据库管理系统都提供一个 <strong>驱动程序</strong> <em>[JDBC]</em>：对于 <em>[MySQL]</em>，就是库 <strong><em>[mysql-connector-j]</em></strong>。打开连接开销很大：<em>[Spring Boot]</em> 使用<strong>连接池</strong> （<em>[HikariCP]</em>），它保持少量连接处于打开状态，并把它们借给请求使用；</li>
+<li><em>[JPA]</em> （<em>[Jakarta Persistence API]</em>）是 <em>[Java]</em> 中 ORM（<em>[Object-Relational Mapper]</em>）的标准：它把 <em>[Java]</em> 类（<strong>实体</strong>）映射到数据库表，并把读取到的行转换为对象。<em>[JPA]</em> 只是一个标准，由接口和注解组成；实现它的 ORM 在这里是 <em>[Hibernate]</em>；</li>
+<li><em>[Spring Data JPA]</em> 在此之上再添加一层：你只需要<strong>声明</strong>一个 DAO 接口，应用程序启动时 <em>[Spring Data JPA]</em> 会自己编写实现，包括从方法名推导出的查询。</li>
+</ul>
+<p>所有这些都由 <strong><em>[spring-boot-starter-data-jpa]</em></strong> 启动器提供。</p>
+<h2 id="91-示例-28三层架构的人员管理系统">9.1. <span style="color: #2e74b5">示例 28：三层架构的人员管理系统</span></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>28-layers/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── database/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>│   └── dbpersons.sql
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>├── src/
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>│   └── main/
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>│       ├── java/
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>│       │   └── example28/
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>│       │       ├── config/
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>│       │       │   └── WebConfig.java
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>│       │       ├── controllers/
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>│       │       │   └── PersonsController.java
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>│       │       ├── dao/
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>│       │       │   └── PersonsDao.java
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>│       │       ├── entities/
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>│       │       │   └── Person.java
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>│       │       ├── business/
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>│       │       │   ├── PersonData.java
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>│       │       │   ├── BusinessException.java
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>│       │       │   └── PersonsBusiness.java
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>│       │       ├── models/
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>│       │       │   └── PersonForm.java
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>│       │       └── Example28Application.java
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>│       └── resources/
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>│           ├── static/
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>│           │   ├── css/
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>│           │   │   └── styles.css
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>│           │   └── js/
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>│           │       └── app.js
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>│           ├── templates/
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>│           │   ├── fragments/
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>│           │   │   ├── field.html
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>│           │   │   └── confirmation.html
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>│           │   ├── persons/
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>│           │   │   ├── form.html
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>│           │   │   └── list.html
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>│           │   └── layout.html
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>│           ├── application.properties
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>│           └── messages.properties
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>└── pom.xml
+</code></pre></div></td></tr></table></div>
+<h3 id="911-数据库">9.1.1. <span style="color: #1f4d78">数据库</span></h3>
+<p>数据库 <strong><em>[dbpersons]</em></strong> 由一个 SQL 脚本创建。使用 <em>[Laragon]</em> 时，你可以运行它，例如在 <em>[HeidiSQL]</em> 工具中（文件菜单 / 运行 SQL 文件），或者在示例文件夹中通过命令行运行：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>mysql -u root &lt; database/dbpersons.sql
+</code></pre></div></td></tr></table></div>
+<p><strong><em>[database/dbpersons.sql]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">-- database of example 28: a single table, [persons]</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">-- the script is written in UTF-8</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">SET</span><span class="w"> </span><span class="k">NAMES</span><span class="w"> </span><span class="n">utf8mb4</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dbpersons</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">dbpersons</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">USE</span><span class="w"> </span><span class="n">dbpersons</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">persons</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="c1">-- the version of the row, increased by JPA at each modification</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">  </span><span class="k">version</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="n">first_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="n">last_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="c1">-- two persons cannot have the same first and last names</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">  </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">unq_persons_first_name_last_name</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="p">;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">persons</span><span class="w"> </span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="p">(</span><span class="s1">'Marie'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Pélissier'</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">),</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">  </span><span class="p">(</span><span class="s1">'Jacques'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Bromard'</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">),</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">  </span><span class="p">(</span><span class="s1">'Philippe'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Jandot'</span><span class="p">,</span><span class="w"> </span><span class="mi">58</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 3 行：脚本以 UTF-8 编写；这一点要告知服务器，以便数据中的重音字符（<strong><em>[Pélissier]</em></strong>）保持完好；</li>
+<li>第 5 行：字符集 <strong><em>[utf8mb4]</em></strong> 接受所有字符（重音字符、表情符号等）。排序规则 <strong><em>[utf8mb4_unicode_ci]</em></strong> 在比较字符串时不区分大小写和重音：对于 <em>[MySQL]</em>，<strong><em>[pelissier]</em></strong> 与 <strong><em>[Pélissier]</em></strong> 是相等的；</li>
+<li>第 11 行：版本号，每次修改该行时递增（参见下文的“乐观锁”）；</li>
+<li>第 17 行：一个<strong>具名</strong>唯一性约束：数据库不允许两个人拥有相同的名和姓。该名称将用于识别错误。</li>
+</ul>
+<h3 id="912-配置">9.1.2. <span style="color: #1f4d78">配置</span></h3>
+<p>文件 <strong><em>[pom.xml]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">         </span><span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">         </span><span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="nt">&lt;parent&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>course.springmvc<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>examples<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">  </span><span class="nt">&lt;/parent&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>example28<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="cm">&lt;!-- Thymeleaf 视图 --&gt;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="cm">&lt;!-- 验证（Bean Validation、Hibernate Validator） --&gt;</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-validation<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="cm">&lt;!-- Spring Data JPA（Hibernate）和 MySQL JDBC 驱动程序 --&gt;</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>com.mysql<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>mysql-connector-j<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">      </span><span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 20–23 行：数据验证（参见第 3 章）；</li>
+<li>第 25–28 行：<em>[Spring Data JPA]</em>，以及 <em>[Hibernate]</em>、<em>[HikariCP]</em>和 <em>[Spring]</em> 的事务管理；</li>
+<li>第 29–33 行：用于 <em>[JDBC]</em> <em>[MySQL]</em> 的驱动程序。 <strong><em>[runtime]</em></strong> 作用域表明应用程序代码不会直接使用它（它只认识 <em>[JPA]</em>）：驱动程序只在运行时才需要。它同样适用于 <em>[MariaDB]</em>。</li>
+</ul>
+<p>文件 <strong><em>[application.properties]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># 服务器的监听端口（默认为 8080）</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="na">server.port</span><span class="o">=</span><span class="s">5000</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># Spring Boot 的错误响应不包含调用栈</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="na">spring.web.error.include-stacktrace</span><span class="o">=</span><span class="s">never</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># 会话（承载闪现属性）仅通过 Cookie 来跟踪</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="na">server.servlet.session.tracking-modes</span><span class="o">=</span><span class="s">cookie</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="c1"># 到数据库的连接：JDBC URL、用户、密码（Laragon 的默认值）</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/dbpersons</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="na">spring.datasource.password</span><span class="o">=</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="c1"># Hibernate 既不创建也不修改表：这是 SQL 脚本的职责</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="na">spring.jpa.hibernate.ddl-auto</span><span class="o">=</span><span class="s">none</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="c1"># 在构建视图期间，不保持与数据库的连接处于打开状态</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="na">spring.jpa.open-in-view</span><span class="o">=</span><span class="s">false</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="c1"># true：发送到数据库的 SQL 语句会显示在控制台中</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="na">spring.jpa.show-sql</span><span class="o">=</span><span class="s">false</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 6 行：成功消息作为闪现属性发送（参见示例 20），存储在会话中：只需会话 Cookie 就足以找回它，而无需把会话 ID 添加到 URL 中；</li>
+<li>第 9–11 行：与数据库的连接，用于 <strong>数据源</strong> （<em>[DataSource]</em>），它由 <em>[Spring Boot]</em> 使用 <em>[HikariCP]</em> 创建：包括 <em>[JDBC]</em> URL（驱动程序、服务器、端口、数据库）、用户名和密码。这些是 <em>[Laragon]</em> 的默认值（用户 <strong><em>[root]</em></strong>，无密码）。无需指定数据库类型（及其版本）：<em>[Hibernate]</em> 在首次连接时向服务器请求这些信息，并相应地调整它所生成的 SQL；</li>
+<li>第 13 行：<em>[Hibernate]</em> 能够根据实体创建或修改表；这里禁止这样做（<strong><em>[none]</em></strong>）：数据库由 SQL 脚本创建，并以它为准；</li>
+<li>第 15 行：默认情况下，<em>[Spring Boot]</em> 会让 <em>[JPA]</em> 会话（及其与数据库的连接）一直保持打开，直到视图完全生成（<em>[Open Session In View]</em>）：这样视图就可能在用户不知情的情况下触发 SQL 查询。这里禁用了这种行为：所有读取都由业务层在视图之前完成。如果没有指定该属性，<em>[Spring Boot]</em> 会在启动时用一条警告报告这一点（<strong><em>[spring.jpa.open-in-view is enabled by default...]</em></strong>）；</li>
+<li>第 17 行：<strong><em>[true]</em></strong> 会在控制台中显示由 <em>[Hibernate]</em> 发送的每条 SQL 命令（参见下面的运行部分）。</li>
+</ul>
+<p>文件 <strong><em>[messages.properties]</em></strong> 包含一条转换错误消息（年龄 <strong><em>[abc]</em></strong>），与示例 19 中相同。类 <strong><em>[config/WebConfig.java]</em></strong> 提供 <em>[Bootstrap]</em>，与之前的示例相同。</p>
+<h3 id="913-person-实体">9.1.3. <span style="color: #1f4d78">Person 实体</span></h3>
+<p>文件 <strong><em>[entities/Person.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span>
+<span class="normal"><a href="#__codelineno-5-33">33</a></span>
+<span class="normal"><a href="#__codelineno-5-34">34</a></span>
+<span class="normal"><a href="#__codelineno-5-35">35</a></span>
+<span class="normal"><a href="#__codelineno-5-36">36</a></span>
+<span class="normal"><a href="#__codelineno-5-37">37</a></span>
+<span class="normal"><a href="#__codelineno-5-38">38</a></span>
+<span class="normal"><a href="#__codelineno-5-39">39</a></span>
+<span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span>
+<span class="normal"><a href="#__codelineno-5-42">42</a></span>
+<span class="normal"><a href="#__codelineno-5-43">43</a></span>
+<span class="normal"><a href="#__codelineno-5-44">44</a></span>
+<span class="normal"><a href="#__codelineno-5-45">45</a></span>
+<span class="normal"><a href="#__codelineno-5-46">46</a></span>
+<span class="normal"><a href="#__codelineno-5-47">47</a></span>
+<span class="normal"><a href="#__codelineno-5-48">48</a></span>
+<span class="normal"><a href="#__codelineno-5-49">49</a></span>
+<span class="normal"><a href="#__codelineno-5-50">50</a></span>
+<span class="normal"><a href="#__codelineno-5-51">51</a></span>
+<span class="normal"><a href="#__codelineno-5-52">52</a></span>
+<span class="normal"><a href="#__codelineno-5-53">53</a></span>
+<span class="normal"><a href="#__codelineno-5-54">54</a></span>
+<span class="normal"><a href="#__codelineno-5-55">55</a></span>
+<span class="normal"><a href="#__codelineno-5-56">56</a></span>
+<span class="normal"><a href="#__codelineno-5-57">57</a></span>
+<span class="normal"><a href="#__codelineno-5-58">58</a></span>
+<span class="normal"><a href="#__codelineno-5-59">59</a></span>
+<span class="normal"><a href="#__codelineno-5-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.entities</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.Column</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.Entity</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.GeneratedValue</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.GenerationType</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.Id</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.Table</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.persistence.Version</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="c1">// [persons] 表的一行</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="nd">@Entity</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"persons"</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">    </span><span class="c1">// 主键，由数据库生成（AUTO_INCREMENT）；JPA 在每次 INSERT 之后</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="c1">// 重新读取其值</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">    </span><span class="nd">@Id</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"id"</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">    </span><span class="c1">// 乐观锁：JPA 在每次 UPDATE 时递增版本，</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="w">    </span><span class="c1">// 并添加条件 "AND version = &lt;读取到的值&gt;"</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="w">    </span><span class="nd">@Version</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"version"</span><span class="p">)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">version</span><span class="p">;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"first_name"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"last_name"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34"></a>
+<a id="__codelineno-5-35" name="__codelineno-5-35"></a><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"age"</span><span class="p">)</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37"></a>
+<a id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="w">    </span><span class="c1">// JPA 需要一个无参数的构造函数</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41"></a>
+<a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47"></a>
+<a id="__codelineno-5-48" name="__codelineno-5-48"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">getId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49"></a>
+<a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">getVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51"></a>
+<a id="__codelineno-5-52" name="__codelineno-5-52"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getFirstName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFirstName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54"></a>
+<a id="__codelineno-5-55" name="__codelineno-5-55"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getLastName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setLastName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-57" name="__codelineno-5-57"></a>
+<a id="__codelineno-5-58" name="__codelineno-5-58"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-59" name="__codelineno-5-59"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-60" name="__codelineno-5-60"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 12 行：<strong><em>[@Entity]</em></strong> 把 <em>[JPA]</em> <strong>实体</strong> 从 <strong><em>[Person]</em></strong> 类创建出来：表中的每一行都将是一个 <strong><em>[Person]</em></strong> 对象。这些注解来自 <strong><em>[jakarta.persistence]</em></strong> 包：它们属于 <em>[JPA]</em> 标准，而不是来自 <em>[Hibernate]</em>；</li>
+<li>第 13 行：对应的表（默认情况下会是 <strong><em>[Person]</em></strong>）；</li>
+<li>第 18–21 行：主键（<strong><em>[@Id]</em></strong>）。<strong><em>[@GeneratedValue(strategy = GenerationType.IDENTITY)]</em></strong> 表示其值由数据库分配（<strong><em>[AUTO_INCREMENT]</em></strong>）：<em>[Hibernate]</em> 在每次 <strong><em>[INSERT]</em></strong> 之后读取分配的值。类型 <strong><em>[Integer]</em></strong>——而不是 <strong><em>[int]</em></strong>——允许值 <strong><em>[null]</em></strong>：尚未登记的人没有 ID。<strong><em>[@Column]</em></strong> 指定与每个字段对应的列名；</li>
+<li>第 25–27 行：版本列。<strong><em>[@Version]</em></strong> 为 <strong>乐观锁</strong> 赋予 <em>[Hibernate]</em>：它在 <strong><em>[INSERT]</em></strong> 时把版本设为 0，在每次 <strong><em>[UPDATE]</em></strong> 时将其加 1，并在每次 <strong><em>[AND version = &lt;value read&gt;]</em></strong>  添加条件 <strong><em>[UPDATE]</em></strong> （以及每次 <strong><em>[DELETE]</em></strong> 时）。我们稍后会看到它的用途；</li>
+<li>第 29–36 行：其他列。<strong><em>[length]</em></strong> 指定列宽：只有当 <em>[Hibernate]</em> 自己创建表时它才有意义，而这里并非如此（参见 <strong><em>[ddl-auto]</em></strong>）；</li>
+<li>第 39–40 行：<em>[JPA]</em> 要求有一个无参构造函数：<em>[Hibernate]</em> 就是用它从读取到的行创建对象，然后再填充其字段；</li>
+<li>第 48–59 行：<strong>访问器</strong> （方法 <strong><em>[getX]</em></strong> 和 <strong><em>[setX]</em></strong>）：该实体是一个 <strong>JavaBean</strong>。没有 <strong><em>[setId]</em></strong> 或 <strong><em>[setVersion]</em></strong>：这两个值只由 <em>[Hibernate]</em> 写入，它直接访问字段。</li>
+</ul>
+<h3 id="914-dao-层">9.1.4. <span style="color: #1f4d78">DAO 层</span></h3>
+<p><strong><em>[dao/PersonsDao.java]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.dao</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.entities.Person</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1">// DAO 层：查询，没有业务规则。</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="c1">// 一个接口，由 Spring Data JPA 在启动时自行实现。</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="c1">// JpaRepository&lt;Person, Integer&gt; 已经提供了 findById、save、deleteById 等</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">PersonsDao</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Person</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">    </span><span class="c1">// 方法的名称描述了查询：</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">    </span><span class="c1">// SELECT ... FROM persons ORDER BY last_name, first_name</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAllByOrderByLastNameAscFirstNameAsc</span><span class="p">();</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">    </span><span class="c1">// 名和姓相同的人员，[exceptId] 除外：</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">    </span><span class="c1">// SELECT ... WHERE first_name = ? AND last_name = ? AND id &lt;&gt; ? LIMIT 1</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findFirstByFirstNameAndLastNameAndIdNot</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">exceptId</span><span class="p">);</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>这就是整个 DAO 层：一个<strong>接口</strong>，没有一行可执行代码。</p>
+<ul>
+<li>第 13 行：该接口继承自 <strong><em>[JpaRepository&lt;Person, Integer&gt;]</em></strong> （一个实体 <strong><em>[Person]</em></strong>，其键是 <strong><em>[Integer]</em></strong>）。启动时，<em>[Spring Data JPA]</em> 会创建一个实现该接口的类，并把它变成 Bean，然后注入。<strong><em>[JpaRepository]</em></strong> 已经提供了标准的方法：<strong><em>[findById]</em></strong> （按键读取，结果放在 <strong><em>[Optional]</em></strong> 中）、<strong><em>[findAll]</em></strong>、<strong><em>[save]</em></strong> （<strong><em>[INSERT]</em></strong> 或 <strong><em>[UPDATE]</em></strong>）、<strong><em>[saveAndFlush]</em></strong>、<strong><em>[deleteById]</em></strong>、<strong><em>[count]</em></strong>……；</li>
+<li>第 17 行：一个<strong>派生查询</strong>：<em>[Spring Data JPA]</em> 分析方法名，并从中推导出查询。<strong><em>[findAll]</em></strong>：所有人员；<strong><em>[By]</em></strong>：没有条件，因为后面没有任何内容；<strong><em>[OrderByLastNameAscFirstNameAsc]</em></strong>：先按姓、再按名升序排序；</li>
+<li>第 21 行：<strong><em>[findFirst]</em></strong>：找到的第一个人（<strong><em>[LIMIT 1]</em></strong>），或者一个空的 <strong><em>[Optional]</em></strong>；<strong><em>[ByFirstNameAndLastNameAndIdNot]</em></strong>：其名和姓与作为参数提供的名和姓相匹配，并且其 ID 不同于第三个参数。这在修改记录时很有用，因为记录不能与它自己冲突。比较由 <em>[MySQL]</em> 执行，因此遵循数据库的排序规则：忽略大小写和重音。</li>
+</ul>
+<p>方法名中的错误（<strong><em>[findAllByOrderByLastNamee]</em></strong>）会在启动时被检测到：应用程序拒绝启动，并报告存在未知属性。对于一个方法名无法表达的复杂查询，则用 <em>[JPQL]</em> 语言（<em>[Jakarta Persistence Query Language]</em>，一种引用实体及其字段而不是表的 SQL）编写，放在 <strong><em>[@Query]</em></strong> 注解中：案例研究使用了其中的几个。</p>
+<h3 id="915-业务层">9.1.5. <span style="color: #1f4d78">业务层</span></h3>
+<p>文件 <strong><em>[business/BusinessException.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span>
+<span class="normal"><a href="#__codelineno-7-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.business</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1">// 某条业务规则拒绝了该操作：消息是给用户看的</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BusinessException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RuntimeException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">BusinessException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong><em>[BusinessException]</em></strong> 表示某条业务规则拒绝了一次操作。这不是程序错误：其消息是给用户看的。它继承自 <strong><em>[RuntimeException]</em></strong>：它是一种<strong>非受检</strong>异常，方法可以抛出它而无需声明（<strong><em>[throws]</em></strong>）。我们将看到，这一选择同样适用于事务。</p>
+<p>文件 <strong><em>[business/PersonData.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.business</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="c1">// 人员的数据，即 Web 层传递过来的样子</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">PersonData</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>一个人的数据，由 Web 层传递过来：业务层不认识表单类。</p>
+<p><strong><em>[business/PersonsBusiness.java]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span>
+<span class="normal"><a href="#__codelineno-9-42">42</a></span>
+<span class="normal"><a href="#__codelineno-9-43">43</a></span>
+<span class="normal"><a href="#__codelineno-9-44">44</a></span>
+<span class="normal"><a href="#__codelineno-9-45">45</a></span>
+<span class="normal"><a href="#__codelineno-9-46">46</a></span>
+<span class="normal"><a href="#__codelineno-9-47">47</a></span>
+<span class="normal"><a href="#__codelineno-9-48">48</a></span>
+<span class="normal"><a href="#__codelineno-9-49">49</a></span>
+<span class="normal"><a href="#__codelineno-9-50">50</a></span>
+<span class="normal"><a href="#__codelineno-9-51">51</a></span>
+<span class="normal"><a href="#__codelineno-9-52">52</a></span>
+<span class="normal"><a href="#__codelineno-9-53">53</a></span>
+<span class="normal"><a href="#__codelineno-9-54">54</a></span>
+<span class="normal"><a href="#__codelineno-9-55">55</a></span>
+<span class="normal"><a href="#__codelineno-9-56">56</a></span>
+<span class="normal"><a href="#__codelineno-9-57">57</a></span>
+<span class="normal"><a href="#__codelineno-9-58">58</a></span>
+<span class="normal"><a href="#__codelineno-9-59">59</a></span>
+<span class="normal"><a href="#__codelineno-9-60">60</a></span>
+<span class="normal"><a href="#__codelineno-9-61">61</a></span>
+<span class="normal"><a href="#__codelineno-9-62">62</a></span>
+<span class="normal"><a href="#__codelineno-9-63">63</a></span>
+<span class="normal"><a href="#__codelineno-9-64">64</a></span>
+<span class="normal"><a href="#__codelineno-9-65">65</a></span>
+<span class="normal"><a href="#__codelineno-9-66">66</a></span>
+<span class="normal"><a href="#__codelineno-9-67">67</a></span>
+<span class="normal"><a href="#__codelineno-9-68">68</a></span>
+<span class="normal"><a href="#__codelineno-9-69">69</a></span>
+<span class="normal"><a href="#__codelineno-9-70">70</a></span>
+<span class="normal"><a href="#__codelineno-9-71">71</a></span>
+<span class="normal"><a href="#__codelineno-9-72">72</a></span>
+<span class="normal"><a href="#__codelineno-9-73">73</a></span>
+<span class="normal"><a href="#__codelineno-9-74">74</a></span>
+<span class="normal"><a href="#__codelineno-9-75">75</a></span>
+<span class="normal"><a href="#__codelineno-9-76">76</a></span>
+<span class="normal"><a href="#__codelineno-9-77">77</a></span>
+<span class="normal"><a href="#__codelineno-9-78">78</a></span>
+<span class="normal"><a href="#__codelineno-9-79">79</a></span>
+<span class="normal"><a href="#__codelineno-9-80">80</a></span>
+<span class="normal"><a href="#__codelineno-9-81">81</a></span>
+<span class="normal"><a href="#__codelineno-9-82">82</a></span>
+<span class="normal"><a href="#__codelineno-9-83">83</a></span>
+<span class="normal"><a href="#__codelineno-9-84">84</a></span>
+<span class="normal"><a href="#__codelineno-9-85">85</a></span>
+<span class="normal"><a href="#__codelineno-9-86">86</a></span>
+<span class="normal"><a href="#__codelineno-9-87">87</a></span>
+<span class="normal"><a href="#__codelineno-9-88">88</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.business</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Objects</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.dao.DataIntegrityViolationException</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.orm.ObjectOptimisticLockingFailureException</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.dao.PersonsDao</span><span class="p">;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.entities.Person</span><span class="p">;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="c1">// 业务层：业务规则，且只有业务规则。</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="c1">// 类上的 @Transactional：每个公共方法都在一个</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="c1">// 事务中运行，在方法结束时提交（COMMIT），如果</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="c1">// 抛出异常则撤销（ROLLBACK）</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="nd">@Service</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="nd">@Transactional</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PersonsBusiness</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NAMESAKE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"A person already has these first and last names."</span><span class="p">;</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">MODIFIED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"This record has been modified meanwhile: reload it."</span><span class="p">;</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PersonsDao</span><span class="w"> </span><span class="n">dao</span><span class="p">;</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PersonsBusiness</span><span class="p">(</span><span class="n">PersonsDao</span><span class="w"> </span><span class="n">dao</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dao</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dao</span><span class="p">;</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="w">    </span><span class="c1">// readOnly：只读事务</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="w">    </span><span class="nd">@Transactional</span><span class="p">(</span><span class="n">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dao</span><span class="p">.</span><span class="na">findAllByOrderByLastNameAscFirstNameAsc</span><span class="p">();</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36"></a>
+<a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="w">    </span><span class="nd">@Transactional</span><span class="p">(</span><span class="n">readOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dao</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="s">"This person does not exist (anymore)."</span><span class="p">));</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41"></a>
+<a id="__codelineno-9-42" name="__codelineno-9-42"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">PersonData</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="w">        </span><span class="c1">// 规则 1：不允许存在名和姓都相同的两个人员</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dao</span><span class="p">.</span><span class="na">findFirstByFirstNameAndLastNameAndIdNot</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">firstName</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">lastName</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">).</span><span class="na">isPresent</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="n">NAMESAKE</span><span class="p">);</span>
+<a id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">save</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">firstName</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">lastName</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">age</span><span class="p">()));</span>
+<a id="__codelineno-9-48" name="__codelineno-9-48"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-49" name="__codelineno-9-49"></a>
+<a id="__codelineno-9-50" name="__codelineno-9-50"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">edit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">PersonData</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-51" name="__codelineno-9-51"></a><span class="w">        </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52"></a><span class="w">        </span><span class="c1">// 规则 2：我们不修改在此期间被别人修改过的记录</span>
+<a id="__codelineno-9-53" name="__codelineno-9-53"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Objects</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="na">getVersion</span><span class="p">(),</span><span class="w"> </span><span class="n">version</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-54" name="__codelineno-9-54"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="n">MODIFIED</span><span class="p">);</span>
+<a id="__codelineno-9-55" name="__codelineno-9-55"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-56" name="__codelineno-9-56"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dao</span><span class="p">.</span><span class="na">findFirstByFirstNameAndLastNameAndIdNot</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">firstName</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="na">lastName</span><span class="p">(),</span><span class="w"> </span><span class="n">id</span><span class="p">).</span><span class="na">isPresent</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-57" name="__codelineno-9-57"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="n">NAMESAKE</span><span class="p">);</span>
+<a id="__codelineno-9-58" name="__codelineno-9-58"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-59" name="__codelineno-9-59"></a><span class="w">        </span><span class="c1">// 读取到的实体受 JPA“跟踪”：只需修改它即可</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60"></a><span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="na">setFirstName</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">firstName</span><span class="p">());</span>
+<a id="__codelineno-9-61" name="__codelineno-9-61"></a><span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="na">setLastName</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">lastName</span><span class="p">());</span>
+<a id="__codelineno-9-62" name="__codelineno-9-62"></a><span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">age</span><span class="p">());</span>
+<a id="__codelineno-9-63" name="__codelineno-9-63"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">save</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+<a id="__codelineno-9-64" name="__codelineno-9-64"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-65" name="__codelineno-9-65"></a>
+<a id="__codelineno-9-66" name="__codelineno-9-66"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-67" name="__codelineno-9-67"></a><span class="w">        </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-9-68" name="__codelineno-9-68"></a><span class="w">        </span><span class="n">dao</span><span class="p">.</span><span class="na">deleteById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-9-69" name="__codelineno-9-69"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<a id="__codelineno-9-70" name="__codelineno-9-70"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-71" name="__codelineno-9-71"></a>
+<a id="__codelineno-9-72" name="__codelineno-9-72"></a><span class="w">    </span><span class="c1">// saveAndFlush：INSERT 或 UPDATE 立即发送到数据库（而不是在</span>
+<a id="__codelineno-9-73" name="__codelineno-9-73"></a><span class="w">    </span><span class="c1">// COMMIT 时），以便能在此处捕获数据库错误</span>
+<a id="__codelineno-9-74" name="__codelineno-9-74"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-75" name="__codelineno-9-75"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-76" name="__codelineno-9-76"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">dao</span><span class="p">.</span><span class="na">saveAndFlush</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+<a id="__codelineno-9-77" name="__codelineno-9-77"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectOptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-78" name="__codelineno-9-78"></a><span class="w">            </span><span class="c1">// UPDATE "WHERE id = ... AND version = ..." 没有修改任何行</span>
+<a id="__codelineno-9-79" name="__codelineno-9-79"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="n">MODIFIED</span><span class="p">);</span>
+<a id="__codelineno-9-80" name="__codelineno-9-80"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DataIntegrityViolationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-81" name="__codelineno-9-81"></a><span class="w">            </span><span class="c1">// 两个同时发生的添加：数据库的唯一性约束拒绝了第二个</span>
+<a id="__codelineno-9-82" name="__codelineno-9-82"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getMostSpecificCause</span><span class="p">().</span><span class="na">getMessage</span><span class="p">()).</span><span class="na">contains</span><span class="p">(</span><span class="s">"unq_persons_first_name_last_name"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-83" name="__codelineno-9-83"></a><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BusinessException</span><span class="p">(</span><span class="n">NAMESAKE</span><span class="p">);</span>
+<a id="__codelineno-9-84" name="__codelineno-9-84"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-85" name="__codelineno-9-85"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<a id="__codelineno-9-86" name="__codelineno-9-86"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-87" name="__codelineno-9-87"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-88" name="__codelineno-9-88"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来解释这段代码：</p>
+<ul>
+<li>第 18 行：业务层是一个服务 Bean；</li>
+<li>第 19 行：附加在类上的 <strong><em>[@Transactional]</em></strong> 适用于它的每个公共方法：方法在一个<strong>事务</strong> 中执行，该事务在方法被调用之前打开（<strong><em>[START TRANSACTION]</em></strong>），在方法返回时提交（<strong><em>[COMMIT]</em></strong>），如果方法抛出非受检异常则回滚（<strong><em>[ROLLBACK]</em></strong>）。与 <strong><em>[@PreAuthorize]</em></strong> （示例 26）一样，<em>[Spring]</em> 把 Bean 包装在一个<strong>代理</strong>中，由它在调用前后打开和关闭事务。方法所做的一切，包括对 DAO 的调用，都发生在同一个事务和同一个连接上；</li>
+<li>第 32–35 行：<strong><em>[readOnly = true]</em></strong>：只读事务，它使 <em>[Hibernate]</em> 不必在结束时检查已修改的实体；</li>
+<li>第 37–40 行：不存在的人会抛出 <strong><em>[BusinessException]</em></strong>。<strong><em>[orElseThrow]</em></strong> 返回 <strong><em>[Optional]</em></strong> 的内容，如果它为空，则抛出由 lambda 生成的异常；</li>
+<li>第 42–48 行：添加。规则：任何两个人都不能有相同的名和姓。这一点在写入之前检查，以便显示清晰的消息。没有任何人的 ID 为 0：因此 <strong><em>[IdNot]</em></strong> 在这里不会把任何人排除在搜索之外；</li>
+<li>第 50–64 行：更新。附加规则：乐观锁（第 53–55 行）。更新表单使用的是表单被打开时那条记录的版本。如果它在此期间发生了变化（另一个用户编辑了同一条记录），更新就会被拒绝，而不是悄悄地覆盖用户的工作。<strong><em>[Objects.equals]</em></strong> 比较两个 <strong><em>[Integer] 实例</em></strong> ，同时接受 <strong><em>[null]</em></strong>；</li>
+<li>第 51 行：对 <strong><em>[read]</em></strong> 的调用是类内的<strong>内部</strong>调用：它不经过代理，因此其 <strong><em>[readOnly]</em></strong> 不起作用。<strong><em>[read]</em></strong> 只是在 <strong><em>[edit]</em></strong> 的事务中执行；</li>
+<li>第 60–63 行：在事务中读取的实体会被 <strong>跟踪</strong>（<em>[Hibernate]</em> 称之为“受管理的”）：只需修改它的字段；<em>[Hibernate]</em> 会检测到变化，并为表的各列生成一条 <strong><em>[UPDATE]</em></strong> ；</li>
+<li>第 66–70 行：删除。先读取这个人——既是为了验证其存在，也是为了让控制器可以提及他们的姓名；</li>
+<li>第 74–87 行：保存。通常情况下，<em>[Hibernate]</em> 只在事务结束时才发送 <strong><em>[INSERT]</em></strong> 和 <strong><em>[UPDATE]</em></strong> 到数据库，也就是在 <strong><em>[COMMIT]</em></strong> 时，即 <strong>在</strong>退出方法之后：此时在这里已经无法拦截数据库错误了。<strong><em>[saveAndFlush]</em></strong> 保存实体并立即发送（<em>[flush]</em>）待处理的 SQL 命令；</li>
+<li>第 77–79 行：前面提到的版本检查并不总是足够：两个用户可以同时保存同一条记录，并且都通过检查。第二个用户的 <strong><em>[UPDATE ... WHERE id = ? AND version = ?]</em></strong> 随后不会修改任何行；<em>[Hibernate]</em> 检测到这一点，<em>[Spring]</em> 抛出 <strong><em>[ObjectOptimisticLockingFailureException]</em></strong>，它最终变成同样的 <strong><em>[BusinessException]</em></strong>；</li>
+<li>第 80–85 行：类似地，同一个人的两次同时添加都会通过同名检查，但数据库的唯一性约束不允许它们都被接受。<em>[Spring]</em> 把来自各种数据库和各种 ORM 的异常翻译成一个通用的异常层次结构：违反约束会变成 <strong><em>[DataIntegrityViolationException]</em></strong>。<strong><em>[getMostSpecificCause()]</em></strong> 返回原始异常——即 <em>[MySQL]</em> 驱动程序的异常——其消息指明了约束的名称（<strong><em>[Duplicate entry &#x27;...&#x27; for key &#x27;unq_persons_first_name_last_name&#x27;]</em></strong>）。违反其他约束的异常则继续向外传播（第 85 行）：这是一种异常情况。</li>
+</ul>
+<p>在异常离开 <strong><em>[PersonsBusiness]</em></strong> 的某个方法的所有情况下（包括 <strong><em>[BusinessException]</em></strong>，因为它继承自 <strong><em>[RuntimeException]</em></strong>），代理都会回滚事务：该方法的所有操作都不会保留。注意：默认情况下，<strong>受检</strong>异常（继承自 <strong><em>[Exception]</em></strong> 而不继承自 <strong><em>[RuntimeException]</em></strong>）不会导致回滚。</p>
+<p>我们通过同时发送 30 个添加同一个人的请求验证了后一种情况：只有一个被接受；对于其他请求，数据库拒绝了 <strong><em>[INSERT]</em></strong> （<em>[MySQL]</em> 错误编号 1062，<em>[Hibernate]</em> 在控制台中将其报告为警告 <strong><em>[HHH000247]</em></strong>），用户收到的是“同名”消息，而不是 500 错误。</p>
+<h3 id="916-web-层">9.1.6. <span style="color: #1f4d78">Web 层</span></h3>
+<p>文件 <strong><em>[models/PersonForm.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span>
+<span class="normal"><a href="#__codelineno-10-24">24</a></span>
+<span class="normal"><a href="#__codelineno-10-25">25</a></span>
+<span class="normal"><a href="#__codelineno-10-26">26</a></span>
+<span class="normal"><a href="#__codelineno-10-27">27</a></span>
+<span class="normal"><a href="#__codelineno-10-28">28</a></span>
+<span class="normal"><a href="#__codelineno-10-29">29</a></span>
+<span class="normal"><a href="#__codelineno-10-30">30</a></span>
+<span class="normal"><a href="#__codelineno-10-31">31</a></span>
+<span class="normal"><a href="#__codelineno-10-32">32</a></span>
+<span class="normal"><a href="#__codelineno-10-33">33</a></span>
+<span class="normal"><a href="#__codelineno-10-34">34</a></span>
+<span class="normal"><a href="#__codelineno-10-35">35</a></span>
+<span class="normal"><a href="#__codelineno-10-36">36</a></span>
+<span class="normal"><a href="#__codelineno-10-37">37</a></span>
+<span class="normal"><a href="#__codelineno-10-38">38</a></span>
+<span class="normal"><a href="#__codelineno-10-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.models</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.constraints.Max</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.constraints.Min</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.constraints.NotBlank</span><span class="p">;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.constraints.NotNull</span><span class="p">;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.constraints.Size</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="c1">// 表单字段及其约束（参见示例 19）</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PersonForm</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The first name is required."</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"30 characters at most."</span><span class="p">)</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The last name is required."</span><span class="p">)</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"30 characters at most."</span><span class="p">)</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a><span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The age is required."</span><span class="p">)</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The age must be between 0 and 150."</span><span class="p">)</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a><span class="w">    </span><span class="nd">@Max</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"The age must be between 0 and 150."</span><span class="p">)</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="w">    </span><span class="c1">// 记录的版本，由隐藏字段携带（仅用于编辑）</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">version</span><span class="p">;</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getFirstName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFirstName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getLastName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setLastName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">getAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAge</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">getVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setVersion</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">version</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>表单及其验证约束（参见示例 19），记录版本（第 26 行）通过隐藏字段传递。年龄是 <strong><em>[Integer]</em></strong> 而不是 <strong><em>[int]</em></strong>：空字段会得到 <strong><em>[null]</em></strong>，由 <strong><em>[@NotNull]</em></strong> 指出。</p>
+<p>文件 <strong><em>[controllers/PersonsController.java]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-11-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-11-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-11-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-11-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-11-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-11-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-11-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-11-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-11-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-11-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-11-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-11-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-11-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-11-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-11-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-11-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-11-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-11-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-11-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-11-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-11-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-11-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-11-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-11-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-11-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-11-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-11-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-11-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-11-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-11-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-11-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-11-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-11-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-11-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-11-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-11-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-11-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-11-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-11-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-11-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-11-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-11-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-11-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-11-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-11-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-11-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-11-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-11-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-11-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-11-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-11-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-11-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-11-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-11-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-11-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-11-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-11-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-11-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-11-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-11-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-11-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-11-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-11-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-11-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-11-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-11-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-11-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-11-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-11-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-11-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-11-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-11-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-11-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-11-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-11-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-11-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-11-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-11-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-11-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-11-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-11-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-11-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-11-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-11-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-11-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-11-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-11-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-11-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-11-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-11-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-11-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-11-100">100</a></span>
+<span class="normal"><a href="#__codelineno-11-101">101</a></span>
+<span class="normal"><a href="#__codelineno-11-102">102</a></span>
+<span class="normal"><a href="#__codelineno-11-103">103</a></span>
+<span class="normal"><a href="#__codelineno-11-104">104</a></span>
+<span class="normal"><a href="#__codelineno-11-105">105</a></span>
+<span class="normal"><a href="#__codelineno-11-106">106</a></span>
+<span class="normal"><a href="#__codelineno-11-107">107</a></span>
+<span class="normal"><a href="#__codelineno-11-108">108</a></span>
+<span class="normal"><a href="#__codelineno-11-109">109</a></span>
+<span class="normal"><a href="#__codelineno-11-110">110</a></span>
+<span class="normal"><a href="#__codelineno-11-111">111</a></span>
+<span class="normal"><a href="#__codelineno-11-112">112</a></span>
+<span class="normal"><a href="#__codelineno-11-113">113</a></span>
+<span class="normal"><a href="#__codelineno-11-114">114</a></span>
+<span class="normal"><a href="#__codelineno-11-115">115</a></span>
+<span class="normal"><a href="#__codelineno-11-116">116</a></span>
+<span class="normal"><a href="#__codelineno-11-117">117</a></span>
+<span class="normal"><a href="#__codelineno-11-118">118</a></span>
+<span class="normal"><a href="#__codelineno-11-119">119</a></span>
+<span class="normal"><a href="#__codelineno-11-120">120</a></span>
+<span class="normal"><a href="#__codelineno-11-121">121</a></span>
+<span class="normal"><a href="#__codelineno-11-122">122</a></span>
+<span class="normal"><a href="#__codelineno-11-123">123</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">example28.controllers</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.propertyeditors.StringTrimmerEditor</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Controller</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.ui.Model</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.validation.BindingResult</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.WebDataBinder</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.InitBinder</span><span class="p">;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.ModelAttribute</span><span class="p">;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.PathVariable</span><span class="p">;</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.PostMapping</span><span class="p">;</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.mvc.support.RedirectAttributes</span><span class="p">;</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.entities.Person</span><span class="p">;</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.business.PersonData</span><span class="p">;</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.business.BusinessException</span><span class="p">;</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.business.PersonsBusiness</span><span class="p">;</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="kn">import</span><span class="w"> </span><span class="nn">example28.models.PersonForm</span><span class="p">;</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.validation.Valid</span><span class="p">;</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="c1">// Web 层：它只知道业务层</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="nd">@Controller</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PersonsController</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PersonsBusiness</span><span class="w"> </span><span class="n">business</span><span class="p">;</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PersonsController</span><span class="p">(</span><span class="n">PersonsBusiness</span><span class="w"> </span><span class="n">business</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">business</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">business</span><span class="p">;</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="w">    </span><span class="c1">// 接收到的字符串会去除多余的空格（参见示例 19）</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="w">    </span><span class="nd">@InitBinder</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initBinder</span><span class="p">(</span><span class="n">WebDataBinder</span><span class="w"> </span><span class="n">binder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="w">        </span><span class="n">binder</span><span class="p">.</span><span class="na">registerCustomEditor</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringTrimmerEditor</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a>
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">home</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:/persons"</span><span class="p">;</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a>
+<a id="__codelineno-11-43" name="__codelineno-11-43"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/persons"</span><span class="p">)</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"persons"</span><span class="p">,</span><span class="w"> </span><span class="n">business</span><span class="p">.</span><span class="na">list</span><span class="p">());</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"persons/list"</span><span class="p">;</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48"></a>
+<a id="__codelineno-11-49" name="__codelineno-11-49"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/persons/add"</span><span class="p">)</span>
+<a id="__codelineno-11-50" name="__codelineno-11-50"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">addForm</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-51" name="__codelineno-11-51"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Add a person"</span><span class="p">,</span><span class="w"> </span><span class="s">"/persons/add"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PersonForm</span><span class="p">(),</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53"></a>
+<a id="__codelineno-11-54" name="__codelineno-11-54"></a><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">"/persons/add"</span><span class="p">)</span>
+<a id="__codelineno-11-55" name="__codelineno-11-55"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="p">(</span><span class="s">"person"</span><span class="p">)</span><span class="w"> </span><span class="n">PersonForm</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">result</span><span class="p">,</span>
+<a id="__codelineno-11-56" name="__codelineno-11-56"></a><span class="w">            </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-57" name="__codelineno-11-57"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-58" name="__codelineno-11-58"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Add a person"</span><span class="p">,</span><span class="w"> </span><span class="s">"/persons/add"</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-11-59" name="__codelineno-11-59"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-60" name="__codelineno-11-60"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-61" name="__codelineno-11-61"></a><span class="w">            </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">business</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PersonData</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">(),</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getLastName</span><span class="p">(),</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getAge</span><span class="p">()));</span>
+<a id="__codelineno-11-62" name="__codelineno-11-62"></a><span class="w">            </span><span class="n">redirect</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">"success"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getLastName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" has been added."</span><span class="p">);</span>
+<a id="__codelineno-11-63" name="__codelineno-11-63"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:/persons"</span><span class="p">;</span>
+<a id="__codelineno-11-64" name="__codelineno-11-64"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">BusinessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-65" name="__codelineno-11-65"></a><span class="w">            </span><span class="c1">// 某条业务规则拒绝：我们重新显示表单，消息显示在页面底部</span>
+<a id="__codelineno-11-66" name="__codelineno-11-66"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Add a person"</span><span class="p">,</span><span class="w"> </span><span class="s">"/persons/add"</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-11-67" name="__codelineno-11-67"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-68" name="__codelineno-11-68"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-69" name="__codelineno-11-69"></a>
+<a id="__codelineno-11-70" name="__codelineno-11-70"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/persons/{id:\\d+}/edit"</span><span class="p">)</span>
+<a id="__codelineno-11-71" name="__codelineno-11-71"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">editForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-72" name="__codelineno-11-72"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-73" name="__codelineno-11-73"></a><span class="w">            </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">business</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-11-74" name="__codelineno-11-74"></a><span class="w">            </span><span class="n">PersonForm</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PersonForm</span><span class="p">();</span>
+<a id="__codelineno-11-75" name="__codelineno-11-75"></a><span class="w">            </span><span class="n">values</span><span class="p">.</span><span class="na">setFirstName</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">());</span>
+<a id="__codelineno-11-76" name="__codelineno-11-76"></a><span class="w">            </span><span class="n">values</span><span class="p">.</span><span class="na">setLastName</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getLastName</span><span class="p">());</span>
+<a id="__codelineno-11-77" name="__codelineno-11-77"></a><span class="w">            </span><span class="n">values</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+<a id="__codelineno-11-78" name="__codelineno-11-78"></a><span class="w">            </span><span class="n">values</span><span class="p">.</span><span class="na">setVersion</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">getVersion</span><span class="p">());</span>
+<a id="__codelineno-11-79" name="__codelineno-11-79"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Edit a person"</span><span class="p">,</span><span class="w"> </span><span class="s">"/persons/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"/edit"</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-11-80" name="__codelineno-11-80"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">BusinessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-81" name="__codelineno-11-81"></a><span class="w">            </span><span class="n">redirect</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">"error"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-11-82" name="__codelineno-11-82"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:/persons"</span><span class="p">;</span>
+<a id="__codelineno-11-83" name="__codelineno-11-83"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-84" name="__codelineno-11-84"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-85" name="__codelineno-11-85"></a>
+<a id="__codelineno-11-86" name="__codelineno-11-86"></a><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">"/persons/{id:\\d+}/edit"</span><span class="p">)</span>
+<a id="__codelineno-11-87" name="__codelineno-11-87"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">edit</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="p">(</span><span class="s">"person"</span><span class="p">)</span><span class="w"> </span><span class="n">PersonForm</span><span class="w"> </span><span class="n">input</span><span class="p">,</span>
+<a id="__codelineno-11-88" name="__codelineno-11-88"></a><span class="w">            </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-89" name="__codelineno-11-89"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/persons/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"/edit"</span><span class="p">;</span>
+<a id="__codelineno-11-90" name="__codelineno-11-90"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-91" name="__codelineno-11-91"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Edit a person"</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-11-92" name="__codelineno-11-92"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-93" name="__codelineno-11-93"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-94" name="__codelineno-11-94"></a><span class="w">            </span><span class="n">PersonData</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PersonData</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">(),</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getLastName</span><span class="p">(),</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+<a id="__codelineno-11-95" name="__codelineno-11-95"></a><span class="w">            </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">business</span><span class="p">.</span><span class="na">edit</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getVersion</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-11-96" name="__codelineno-11-96"></a><span class="w">            </span><span class="n">redirect</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">"success"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getLastName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" has been edited."</span><span class="p">);</span>
+<a id="__codelineno-11-97" name="__codelineno-11-97"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:/persons"</span><span class="p">;</span>
+<a id="__codelineno-11-98" name="__codelineno-11-98"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">BusinessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-99" name="__codelineno-11-99"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">form</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s">"Edit a person"</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-11-100" name="__codelineno-11-100"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-101" name="__codelineno-11-101"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-102" name="__codelineno-11-102"></a>
+<a id="__codelineno-11-103" name="__codelineno-11-103"></a><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">"/persons/{id:\\d+}/delete"</span><span class="p">)</span>
+<a id="__codelineno-11-104" name="__codelineno-11-104"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirect</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-105" name="__codelineno-11-105"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-106" name="__codelineno-11-106"></a><span class="w">            </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">business</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-11-107" name="__codelineno-11-107"></a><span class="w">            </span><span class="n">redirect</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">"success"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getFirstName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getLastName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" has been deleted."</span><span class="p">);</span>
+<a id="__codelineno-11-108" name="__codelineno-11-108"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">BusinessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-109" name="__codelineno-11-109"></a><span class="w">            </span><span class="c1">// 没有要重新显示的表单：错误也作为闪现属性传递</span>
+<a id="__codelineno-11-110" name="__codelineno-11-110"></a><span class="w">            </span><span class="n">redirect</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">"error"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-11-111" name="__codelineno-11-111"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-112" name="__codelineno-11-112"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"redirect:/persons"</span><span class="p">;</span>
+<a id="__codelineno-11-113" name="__codelineno-11-113"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-114" name="__codelineno-11-114"></a>
+<a id="__codelineno-11-115" name="__codelineno-11-115"></a><span class="w">    </span><span class="c1">// 表单视图的模型：标题、提交地址、值、全局错误</span>
+<a id="__codelineno-11-116" name="__codelineno-11-116"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">form</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">PersonForm</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-117" name="__codelineno-11-117"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"title"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">);</span>
+<a id="__codelineno-11-118" name="__codelineno-11-118"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"action"</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">);</span>
+<a id="__codelineno-11-119" name="__codelineno-11-119"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"person"</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">);</span>
+<a id="__codelineno-11-120" name="__codelineno-11-120"></a><span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">"error"</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">);</span>
+<a id="__codelineno-11-121" name="__codelineno-11-121"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"persons/form"</span><span class="p">;</span>
+<a id="__codelineno-11-122" name="__codelineno-11-122"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-123" name="__codelineno-11-123"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>我们来分析这段代码：</p>
+<ul>
+<li>第 26–30 行：控制器只认识业务层；</li>
+<li>第 33–36 行：收到的字符串会去掉首尾空格，空字符串会变成 <strong><em>[null]</em></strong> （参见示例 19）；</li>
+<li>第 38–41 行：站点根路径重定向到列表；</li>
+<li>第 54–68 行：添加，分三步：表单验证（出错：重新加载），调用业务层（成功：闪现消息并重定向；参见示例 20），<strong><em>[BusinessException]</em></strong> （带着页面底部的消息重新加载）。其他异常不会被捕获：这是一种异常情况，会导致 500 错误；</li>
+<li>第 70 行：<strong><em>[{id:\\d+}]</em></strong>：由正则表达式约束的路径变量（参见示例 02）：<strong><em>[\d+]</em></strong> 表示一串数字（在 <em>[Java]</em> 字符串中反斜杠要写两次）。<strong><em>[/persons/abc/edit]</em></strong> 不对应任何动作：404 错误；</li>
+<li>第 70–84 行：更新表单，预先填入从数据库读取的记录，包括其版本；</li>
+<li>第 86–101 行：与添加操作结构相同；表单返回的版本被传递给业务层；</li>
+<li>第 103–113 行：删除。没有需要重新显示的表单：任何错误也通过闪现属性传递；</li>
+<li>第 116–122 行：表单视图模板，同时用于添加和修改记录：标题和提交地址不同，表单的值以及业务层的错误也不同。</li>
+</ul>
+<p><strong><em>[templates/persons/form.html]</em></strong> 文件：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{layout :: page(~{::main})}"</span><span class="p">&gt;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"h3"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"${title}"</span><span class="p">&gt;</span>Add a person<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">th:action</span><span class="o">=</span><span class="s">"${action}"</span> <span class="na">th:object</span><span class="o">=</span><span class="s">"${person}"</span> <span class="na">novalidate</span><span class="p">&gt;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>    <span class="cm">&lt;!--/* 所读取记录的版本：它会随表单一起回传 */--&gt;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="na">th:field</span><span class="o">=</span><span class="s">"*{version}"</span><span class="p">&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{fragments/field :: field(name='firstName', label='First name', type='text')}"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{fragments/field :: field(name='lastName', label='Last name', type='text')}"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{fragments/field :: field(name='age', label='Age', type='number')}"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn btn-primary"</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Save<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a>    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">"btn btn-link"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/persons"</span><span class="p">&gt;</span>Cancel<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a>  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 6 行：<strong><em>[th:object]</em></strong> 标识表单对象；<strong><em>[th:action]</em></strong> 接收由控制器提供的提交地址；</li>
+<li>第 8 行：携带记录版本的隐藏字段：<strong><em>[th:field=&quot;*{version}&quot;]</em></strong> 生成它的属性 <strong><em>[name]</em></strong> 和 <strong><em>[value]</em></strong> （参见示例 19）；</li>
+<li>第 9–11 行：由示例 19 中的片段 <strong><em>[field]</em></strong> 生成的三个字段。</li>
+</ul>
+<p>文件 <strong><em>[templates/layout.html]</em></strong>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">"http://www.thymeleaf.org"</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">"page(content)"</span><span class="p">&gt;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Persons<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/bootstrap/css/bootstrap.min.css"</span><span class="p">&gt;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/css/styles.css"</span><span class="p">&gt;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container py-3"</span> <span class="na">style</span><span class="o">=</span><span class="s">"max-width: 40rem"</span><span class="p">&gt;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>    <span class="cm">&lt;!--/* 成功消息（闪现属性，在重定向之后）：位于顶部 */--&gt;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"alert alert-success"</span> <span class="na">role</span><span class="o">=</span><span class="s">"status"</span> <span class="na">th:if</span><span class="o">=</span><span class="s">"${success != null}"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"${success}"</span><span class="p">&gt;</span>success<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"${content}"</span><span class="p">&gt;&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>    <span class="cm">&lt;!--/* 错误：来自当前请求，或来自重定向之前（闪现属性） */--&gt;</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"error-area"</span> <span class="na">role</span><span class="o">=</span><span class="s">"alert"</span> <span class="na">th:if</span><span class="o">=</span><span class="s">"${error != null}"</span> <span class="na">th:text</span><span class="o">=</span><span class="s">"${error}"</span><span class="p">&gt;</span>error<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">"~{fragments/confirmation :: confirmation}"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"/js/app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>第 12 行：成功消息，位于页面顶部；</li>
+<li>第 15 行：页面底部的错误消息：要么是当前请求中的错误（由 <strong><em>[form]</em></strong> 放入模板），要么是在重定向之前存储为闪现属性的错误。在这两种情况下，它都是视图模板的 <strong><em>[error]</em></strong> 属性；</li>
+<li>第 17–18 行：确认窗口及其脚本（参见示例 21）。</li>
+</ul>
+<p>视图 <strong><em>[persons/list.html]</em></strong> 的结构与示例 21 中的联系人列表相同：每个人对应一个指向编辑表单的链接和一个 POST 删除表单，其提交需要确认。片段 <strong><em>[fragments/field.html]</em></strong> 与示例 19 中的相同，而窗口 <strong><em>[fragments/confirmation.html]</em></strong> 和脚本 <strong><em>[static/js/app.js]</em></strong> 与示例 21 中的相同，没有任何改动。</p>
+<h3 id="917-运行">9.1.7. <span style="color: #1f4d78">运行</span></h3>
+<p>如果 <strong><em>[application.properties]</em></strong> 中的值不合适（例如 <strong><em>[root]</em></strong> 的密码），可以在不修改该文件的情况下用环境变量替换它们：属性名写成大写，句点替换为下划线。在 <em>[Windows]</em> （<em>[PowerShell]</em>）下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>$env:SPRING_DATASOURCE_PASSWORD="secret"; ..\mvnw spring-boot:run
+</code></pre></div></td></tr></table></div>
+<p>启动时，使用 <em>[MariaDB]</em> 的话，<em>[Hibernate]</em> 会显示一条警告：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>... WARN ... org.hibernate.orm.core : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+</code></pre></div></td></tr></table></div>
+<p>这没有任何后果：<em>[MariaDB]</em> 向 <em>[MySQL]</em> 驱动程序表明自己的版本号为“5.5.5”，<em>[Hibernate]</em> 把它理解为一个非常古老的 <em>[MySQL]</em>。使用 <em>[MySQL]</em> 8 时则不会出现。</p>
+<p>列表，位于 URL<a href="http://localhost:5000/"><u><span style="color: #0563c1">http://localhost:5000/</span></u></a>：</p>
+<p><img src="images/10000000000002BE0000015EA87FD4E3.png" width="428" height="213" style="width:11.322cm;height:5.644cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000015EA87FD4E3.png" /></p>
+<p>无效的表单：</p>
+<p><img src="images/10000000000002BE000001B1C0A39FFB.png" width="428" height="264" style="width:11.322cm;height:6.983cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE000001B1C0A39FFB.png" /></p>
+<p>同名：业务规则会检测到它。<em>[MySQL]</em>使用数据库的排序规则进行比较时，也会拒绝 <strong><em>[marie pelissier]</em></strong>——小写且不带重音。这里输入的是 <strong><em>[Marie Pélissier]</em></strong>：</p>
+<p><img src="images/10000000000002BE000001C927C68D3A.png" width="428" height="279" style="width:11.322cm;height:7.371cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE000001C927C68D3A.png" /></p>
+<p>添加成功：</p>
+<p><img src="images/10000000000002BE000001D8DCE5CA80.png" width="428" height="288" style="width:11.322cm;height:7.613cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE000001D8DCE5CA80.png" /></p>
+<p>在 <strong><em>[spring.jpa.show-sql=true]</em></strong> 位于 <strong><em>[application.properties]</em></strong>  的情况下（或者，在不修改文件的情况下，使用 <strong><em>[../mvnw spring-boot:run -Dspring-boot.run.arguments=--spring.jpa.show-sql=true]</em></strong>），控制台会显示由 <em>[Hibernate]</em> 发送的每条 SQL 命令。添加一个人，然后在重定向之后显示列表：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>Hibernate: select p1_0.id,p1_0.age,p1_0.first_name,p1_0.last_name,p1_0.version from persons p1_0 where p1_0.first_name=? and p1_0.last_name=? and p1_0.id&lt;&gt;? limit ?
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>Hibernate: insert into persons (age,first_name,last_name,version) values (?,?,?,?)
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>Hibernate: select p1_0.id,p1_0.age,p1_0.first_name,p1_0.last_name,p1_0.version from persons p1_0 order by p1_0.last_name,p1_0.first_name
+</code></pre></div></td></tr></table></div>
+<p>在这里我们可以看到对同名者的搜索（由名称 <strong><em>[findFirstByFirstNameAndLastNameAndIdNot]</em></strong> 派生的查询），<strong><em>[INSERT]</em></strong>，然后是列表的读取（<strong><em>[findAllByOrderByLastNameAscFirstNameAsc]</em></strong>）。各个值作为单独的<strong>参数</strong> （即 <strong><em>[?]</em></strong>）传递：这正是防止 SQL 注入的保护所在。事务命令（<strong><em>[START TRANSACTION]</em></strong>、<strong><em>[COMMIT]</em></strong>）不会显示。修改一条主记录：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>Hibernate: select p1_0.id,p1_0.age,p1_0.first_name,p1_0.last_name,p1_0.version from persons p1_0 where p1_0.id=?
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>Hibernate: select p1_0.id,p1_0.age,p1_0.first_name,p1_0.last_name,p1_0.version from persons p1_0 where p1_0.first_name=? and p1_0.last_name=? and p1_0.id&lt;&gt;? limit ?
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>Hibernate: update persons set age=?,first_name=?,last_name=?,version=? where id=? and version=?
+</code></pre></div></td></tr></table></div>
+<p><strong><em>[UPDATE]</em></strong> 写入新版本并检查旧版本（<strong><em>[where id=? and version=?]</em></strong>）：这就是乐观锁。再看删除操作：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>Hibernate: select p1_0.id,p1_0.age,p1_0.first_name,p1_0.last_name,p1_0.version from persons p1_0 where p1_0.id=?
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>Hibernate: delete from persons where id=? and version=?
+</code></pre></div></td></tr></table></div>
+<p><strong><em>[deleteById]</em></strong> 没有重新读取记录：自从调用 <strong><em>[read]</em></strong> 起，它就已经在事务中被跟踪了。</p>
+<p>乐观锁：两个表单打开的是同一条记录；第一个被保存（版本从 0 变为 1）；第二个仍然是版本 0，因此被拒绝：</p>
+<p><img src="images/10000000000002BE000001C99E63C558.png" width="428" height="279" style="width:11.322cm;height:7.371cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE000001C99E63C558.png" /></p>
+<p>带确认的删除：</p>
+<p><img src="images/10000000000002BE0000018EAF7EEC3F.png" width="428" height="243" style="width:11.322cm;height:6.419cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE0000018EAF7EEC3F.png" /></p>
+<p><img src="images/10000000000002BE000001A85F395FAD.png" width="428" height="258" style="width:11.322cm;height:6.839cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE000001A85F395FAD.png" /></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        本教程由 Anthropic 的 AI <strong>Claude</strong> 应 <strong>Serge Tahé</strong> 的请求编写，根据
+        <em>知识共享署名 – 禁止商业使用 –
+        共享 3.0 未本地化版</em>的条款向公众开放。
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
